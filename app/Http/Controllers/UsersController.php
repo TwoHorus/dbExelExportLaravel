@@ -35,12 +35,14 @@ class UsersController extends Controller
         ->join('team', 'worker.teamid', '=', 'team.id')
         ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+        //->where('lastname', '=', 'Yost')
+        ->where('year', '=', 2017)
         ->orderBy('workerid')->orderBy('projectid')
         ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
         ->get();
         $sortx5 = $unsort;
         //$sortx5 = collect($unsort);
-        //echo($sortx5);
+        echo($sortx5);
         //die();
 
         return view('test', [
@@ -56,7 +58,7 @@ class UsersController extends Controller
         ]);
     }
 
-    public function test2()
+    public function homeselect()
     {
         $user = Qes::all();
         //return $user;
@@ -68,7 +70,12 @@ class UsersController extends Controller
         //return 0;
         //return $user;
         
-
+        return view(
+            'welcome',
+            [
+            'years' => \DB::Table('quarter')->select('year')->groupBy('year')->get()
+            ]
+        );
            return view('test', [
                'qes' => Qes::all()->sortByDesc('projectid')->sortByDesc('workerid'),
 

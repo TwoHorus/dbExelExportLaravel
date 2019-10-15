@@ -23,6 +23,7 @@ $factory->define(App\Team::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Quarter::class, function (Faker\Generator $faker) {
     return [
+        //$table->unique(['year', 'q']); added in migration
         'year'=> $faker->numberBetween(2015, 2020),
         'quarterenddate'=> null,
         'q'=> $faker->numberBetween(1, 4),

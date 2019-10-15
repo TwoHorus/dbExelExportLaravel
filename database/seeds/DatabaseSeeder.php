@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         factory(Project::class, 6)->create([]);
         factory(Projecttype::class, 4)->create([]);
         //factory(Qesgroup::class, 100)->create([]);
-        factory(Quarter::class, 9)->create([]);
+        factory(Quarter::class, 17)->create([]);
         //factory(Request::class, 100)->create([]);
         
         //factory(Teamprojectassign::class, 100)->create([]);

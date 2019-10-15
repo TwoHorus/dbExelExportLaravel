@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
 Route::get('users/export', 'UsersController@export');
+Route::get('/', 'UsersController@homeselect');
 Route::get('test', 'UsersController@exportPreview');

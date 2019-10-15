@@ -15,6 +15,7 @@ class CreateQuarterTable extends Migration
     {
         Schema::create('quarter', function (Blueprint $table) {
             $table->integer('id', true);
+            $table->unique(['year', 'q']);
             $table->integer('year');
             $table->string('quarterenddate', 25)->nullable();
             $table->integer('q');
