@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a81ea5a73ebc29fdd013d76177a616e",
+    "content-hash": "5f2e3b8d69413021dc8c3f4af8998c81",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2891,6 +2891,43 @@
                 "environment"
             ],
             "time": "2019-09-10T21:37:39+00:00"
+        },
+        {
+            "name": "whoops/soap",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/whoops-php/soap.git",
+                "reference": "3a20e2b037bc49ff7f909db2694740ceb1b1be50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/whoops-php/soap/zipball/3a20e2b037bc49ff7f909db2694740ceb1b1be50",
+                "reference": "3a20e2b037bc49ff7f909db2694740ceb1b1be50",
+                "shasum": ""
+            },
+            "require-dev": {
+                "filp/whoops": "^2.0-dev",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Whoops\\Handler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Markus Staab",
+                    "email": "maggus.staab@googlemail.com"
+                }
+            ],
+            "description": "Soap handler for Whoops",
+            "time": "2015-11-23T20:11:17+00:00"
         }
     ],
     "packages-dev": [
