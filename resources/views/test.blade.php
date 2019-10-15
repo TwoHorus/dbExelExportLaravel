@@ -88,12 +88,15 @@ $firstofall=1;
                 echo "|->";
             }
             if (isset($row)) {
-                $firstofall=0;//NEED TO FIX ONLY ONE ENTRY FOR FIRST PROJECT AND WORKER
-                $first = 1;
-                $row->sender = 1;
-                printCurrentRow($row);// THIS PRINTS our row
-                echo("<tr style='border-right:1px solid black'>
+                if ($firstofall=1) {
+                    $firstofall=0;//NEED TO FIX ONLY ONE ENTRY FOR FIRST PROJECT AND WORKER
+                } else {
+                    $first = 1;
+                    $row->sender = 1;
+                    printCurrentRow($row);// THIS PRINTS our row
+                    echo("<tr style='border-right:1px solid black'>
 <td style='border:1px solid black' colspan=16>&nbsp;</td></tr>");
+                }
             }
             $row = (object)[
                 'dent' => 'new',// NEW LINE
