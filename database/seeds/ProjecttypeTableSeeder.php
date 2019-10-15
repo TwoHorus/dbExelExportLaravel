@@ -17,23 +17,21 @@ class ProjecttypeTableSeeder extends Seeder
         \DB::table('projecttype')->delete();
         
         \DB::table('projecttype')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => '1',
                 'name' => 'intern',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => '2',
                 'name' => 'extern',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => '3',
                 'name' => 'drittmittelfinanziert',
             ),
         ));
-        
-        
     }
 }

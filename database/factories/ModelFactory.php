@@ -7,7 +7,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'username' => $faker->userName,
         'sAMAccountName' => $faker->word,
         'password' => bcrypt($faker->password),
-        'remember_token' => str_random(10),
+        'remember_token' => Str::random(10),
         'isworkerid' => function () {
              return factory(App\Worker::class)->create()->id;
         },
@@ -25,7 +25,7 @@ $factory->define(App\Quarter::class, function (Faker\Generator $faker) {
     return [
         'year'=> $faker->numberBetween(2015, 2020),
         'quarterenddate'=> null,
-        'q'=> $faker->numberBetween(0, 4),
+        'q'=> $faker->numberBetween(1, 4),
         'confirmedstate'=> $faker->numberBetween(0, 3),
 
     ];

@@ -15,8 +15,5 @@ class TeamprojectassignTableSeeder extends Seeder
         
 
         \DB::table('teamprojectassign')->delete();
-        
-        
-        
     }
 }
