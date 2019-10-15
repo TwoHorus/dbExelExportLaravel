@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('users/export', 'UsersController@export');
+Route::get('test', 'UsersController@exportPreview');
