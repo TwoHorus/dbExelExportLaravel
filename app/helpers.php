@@ -39,7 +39,7 @@ function printCurrentRow(object $finishedrow)
 <td style="color:#F0AC0F">
     <?php
 
-    echo $finishedrow->projecttypename ?? '&nbsp' ;
+    echo $finishedrow->funding ?? '&nbsp' ;
 
     ?></td>
 

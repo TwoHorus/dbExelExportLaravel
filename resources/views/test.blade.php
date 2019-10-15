@@ -25,7 +25,7 @@
            $debugview=0;
             //helper:  <td><?php echo($finishedrow->sender);? ></td>
     $userid = null;
-    $projectid = 0;
+    $projectid = null;
     $printedProject = 0;
 
     // new stdClass();
@@ -42,7 +42,7 @@
         $filter = null;
 //Suppressing warnings.
     }
-    $first = 0;
+    $first = 3;
     ?>
     @foreach($qes as $filter => $valx)
         <!--THIS NEEEDS TO GO SOMEWHERE!!!!<tr> currently placed-->
@@ -82,20 +82,21 @@ $firstofall=1;
         
         if (!($entry->workerid == $userid)||($firstofall==1)) {// are we not on the same person?
             $userid = $entry->workerid;//set the id for the next foreach
-
+            $notfirst=0;
 
             if ($debugview==1) {
                 echo "|->";
             }
             if (isset($row)) {
-                if ($firstofall=1) {
+                if ($firstofall==1) {
                     $firstofall=0;//NEED TO FIX ONLY ONE ENTRY FOR FIRST PROJECT AND WORKER
-                } else {
+                } else {/*
                     $first = 1;
                     $row->sender = 1;
-                    printCurrentRow($row);// THIS PRINTS our row
+                    printCurrentRow($row);// THIS PRINTS our row NOT yet
                     echo("<tr style='border-right:1px solid black'>
 <td style='border:1px solid black' colspan=16>&nbsp;</td></tr>");
+                */
                 }
             }
             $row = (object)[
@@ -110,6 +111,7 @@ $firstofall=1;
                 'actualstate4' => ' ',
                 'projecttypename' => $entry->project->type->name ?? null,
                 'projectname' => $entry->project->name ?? $entry->pname,
+                'funding' => $entry->project->type->name ?? $entry->ptypename,
                 'kt' => $entry->project->kostentraeger->name ??' ',
                 'sender' => 'default',
                 'firstname' => $entry->worker->firstname ?? $entry->firstname,
@@ -118,12 +120,14 @@ $firstofall=1;
             ];
         } else {// User is the same
             if ($first == 2) {
-                $row->dent = 'project';
-                $first = 1;
+               // $row->dent = 'project';
+                //$first = 1;
             }
-            if (($entry->projectid != $projectid) //if we are on the same person, are we not on the same Project?
-                && ($printedProject == 0) //is this correct?
-                && ($first == 0)) {//the first is false
+            echo $notfirst;
+            if ($entry->projectid== $projectid) {
+                $notfirst=0;
+            }
+            if (($entry->projectid != $projectid )&& ($printedProject == 0) && ($first == 0)&& $notfirst==2) {//the first is false
                 if ($debugview==1) {
                     echo 'x';
                 }
@@ -145,6 +149,7 @@ $firstofall=1;
                         'actualstate4' => ' ',
                         'projecttypename' => $entry->project->type->name ?? null,
                         'projectname' => $entry->project->name ?? $entry->pname,
+                        'funding' => $entry->project->type->name ?? $entry->ptypename,
                         'kt' => $entry->project->kostentraeger->name ??' ',
                         'sender' => 'default',
                     'firstname' => $entry->worker->firstname ?? $entry->firstname,
@@ -161,6 +166,8 @@ $firstofall=1;
                 //$row->projectname = $entry->project->name;
                // $row->kt = $entry->project->kostentraeger->name ?? 'test';
             } else {// same person same project
+                $notfirst++;
+
                 if ($debugview==1) {
                     echo "_";
                 }

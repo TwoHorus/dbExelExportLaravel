@@ -34,12 +34,12 @@ class UsersController extends Controller
         ->join('worker', 'Qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
         ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+        ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
         ->orderBy('workerid')->orderBy('projectid')
-        ->select('*', 'team.name as tname', 'projects.name as pname')
+        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
         ->get();
         $sortx5 = $unsort;
         //$sortx5 = collect($unsort);
-        //
         //echo($sortx5);
         //die();
 
