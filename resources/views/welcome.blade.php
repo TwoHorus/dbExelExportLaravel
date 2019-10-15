@@ -84,8 +84,37 @@
                     Laravel
                 </div>
                 <div class="content">
-<?php echo $years;?>
-select from here to use a specific year 
+
+
+<table style="float:center; width:100%">
+<tr style="float:center;">
+<td style="float:center; width:30%">
+                  <form id="year" action="handle" method="post" accept-charset="UTF-8">
+                    {{ csrf_field() }}
+                    
+                    <table style="float:right;width:68%">
+                <td style="float:left;width:33%">
+                  <select style="width:100%" name="year" form="year">
+
+                    <option value="" selected disabled hidden>Jahr Wählen</option>
+                        <?php foreach ($years as $key => $valuetwo) {
+                            echo '<option value=' . $valuetwo->year . '>' . $valuetwo->year . '</option>';
+                        } ?>
+                  </select>
+                </td>
+                <td style="float:left">
+                  <button type="submit" value="preview" name="ACTION">Vorschau</button>
+                </td>
+                <td style="float:left">
+                  <button type="submit" value="export" name="ACTION">Export</button>
+                </td>
+            </table>
+            </form>
+            </td>
+
+</tr>
+</table>
+
 </div>
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>

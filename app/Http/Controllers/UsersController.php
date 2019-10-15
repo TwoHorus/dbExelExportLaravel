@@ -10,6 +10,7 @@ use App\Projecttype;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
@@ -36,7 +37,7 @@ class UsersController extends Controller
         ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
         //->where('lastname', '=', 'Yost')
-        ->where('year', '=', 2017)
+        ->where('year', '=', 2020)
         ->orderBy('workerid')->orderBy('projectid')
         ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
         ->get();
@@ -83,5 +84,29 @@ class UsersController extends Controller
           // 'workers' => Worker::all(),
            
            ]);
+    }
+
+    public function handleInquiry(Request $yearAndType)
+    {
+        $this->validate($yearAndType, [
+            'year' => 'bail|required|integer',
+            'ACTION' => 'string|required',
+          ]);
+        if ($yearAndType->input('ACTION') == 'preview') {
+            return view('test', [
+              'qes' => \DB::Table('Qes')
+            ->orderBy('Worker')
+            ->join('projects', 'Qes.projectid', '=', 'projects.id')
+            ->join('worker', 'Qes.workerid', '=', 'worker.id')
+            ->join('team', 'worker.teamid', '=', 'team.id')
+            ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+            ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+            ->where('year', '=', $yearAndType->input('year'))//this is the variable part
+            ->orderBy('workerid')->orderBy('projectid')
+            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
+            ->get(),
+            'uienabled' => 'true'
+            ]);
+        }
     }
 }

@@ -1,3 +1,14 @@
+<?php
+ 
+if (isset($uienabled)) {
+    if ($uienabled=='true') {
+        $url=url('/');
+        echo'<a class="button" href="'.$url.'">Zurück</a>';
+    }
+}
+?>
+
+
 <table border=1 style="border-collapse: collapse;padding-left:10px;">
     <thead>
     <tr>
@@ -123,7 +134,7 @@ $firstofall=1;
                // $row->dent = 'project';
                 //$first = 1;
             }
-            echo $notfirst;
+           // echo $notfirst;
             if ($entry->projectid== $projectid) {
                 $notfirst=0;
             }

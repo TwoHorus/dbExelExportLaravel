@@ -18,3 +18,7 @@
 Route::get('users/export', 'UsersController@export');
 Route::get('/', 'UsersController@homeselect');
 Route::get('test', 'UsersController@exportPreview');
+
+Route::group(array('before'=>'csrf'), function () {
+    Route::post('handle', 'UsersController@handleInquiry');
+});

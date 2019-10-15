@@ -50,13 +50,13 @@ class DatabaseSeeder extends Seeder
         factory(Project::class, 6)->create([]);
         factory(Projecttype::class, 4)->create([]);
         //factory(Qesgroup::class, 100)->create([]);
-        factory(Quarter::class, 17)->create([]);
+        factory(Quarter::class, 20)->create([]);
         //factory(Request::class, 100)->create([]);
         
         //factory(Teamprojectassign::class, 100)->create([]);
         //factory(Usergroupassign::class, 100)->create([]);
         //factory(Workerprojectassign::class, 100)->create([]);
 
-        factory(Qes::class, 400)->create([]);
+        factory(Qes::class, 2000)->create([]);
     }
 }
