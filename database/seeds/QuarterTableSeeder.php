@@ -16,7 +16,7 @@ class QuarterTableSeeder extends Seeder
 
         \DB::table('quarter')->delete();
         
-        \DB::table('quarter')->insert(array (
+       /* \DB::table('quarter')->insert(array (
             0 =>
             array (
                 'id' => '29',
@@ -25,6 +25,6 @@ class QuarterTableSeeder extends Seeder
                 'q' => '3',
                 'confirmedstate' => '2',
             ),
-        ));
+        ));*/
     }
 }
