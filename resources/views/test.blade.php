@@ -32,6 +32,7 @@ if (isset($uienabled)) {
     </tr>
     </thead>
     <tbody>
+   
     <?php
            $debugview=0;
             //helper:  <td><?php echo($finishedrow->sender);? ></td>
@@ -56,9 +57,9 @@ if (isset($uienabled)) {
     $first = 3;
     ?>
     @foreach($qes as $filter => $valx)
-        <!--THIS NEEEDS TO GO SOMEWHERE!!!!<tr> currently placed-->
+        <?php // <!--THIS NEEEDS TO GO SOMEWHERE!!!!<tr> currently placed-->
 
-        <?php
+        
         if (!isset($valx->quarter)) {
             //dump($valx);
             if (!($valx->year >= $firstyear) &&

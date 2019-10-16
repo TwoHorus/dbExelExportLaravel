@@ -2,6 +2,8 @@
 
 function printCurrentRow(object $finishedrow)
 {
+    //
+    echo '<tr>';
     if ($finishedrow->dent=='new') {
         ?>
 <td style="color:#FFAEFF"> 
@@ -143,8 +145,8 @@ function printCurrentRow(object $finishedrow)
     ?></td>
 
 
-
 </tr>
+
 
     <?php
 }
@@ -154,7 +156,7 @@ function printCurrentRow(object $finishedrow)
 function indent($int)
 {
     $x="
-<td style='border:thin' colspan=".($int).">&nbsp;</td>";
+<td  colspan=".($int).">&nbsp;</td>";
    /* for ($i=0; $i<$int; $i++) {
         $x = $x.'<td>&nbsp;</td>';
     }*/

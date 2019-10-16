@@ -23,6 +23,23 @@ class UsersController extends Controller
     }
     public function exportPreview()
     {
+
+        return view('test', [
+            'qes' => \DB::Table('Qes')
+            ->orderBy('Worker')
+            ->join('projects', 'Qes.projectid', '=', 'projects.id')
+            ->join('worker', 'Qes.workerid', '=', 'worker.id')
+            ->join('team', 'worker.teamid', '=', 'team.id')
+            ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+            ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+            ->where('year', '=', 2016)//this is the variable part
+            ->orderBy('workerid')->orderBy('projectid')
+            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
+            ->get()]);
+
+
+
+
         $unsort = Qes::all();//->sortBy('workerid');
         $sortx2 = $unsort->sortBy('workerid'.'projectid');
         //echo($sortx2);
@@ -107,6 +124,23 @@ class UsersController extends Controller
             ->get(),
             'uienabled' => 'true'
             ]);
+        }
+        if ($yearAndType->input('ACTION') == 'export') {
+            return Excel::download(new UsersExport($yearAndType->input('year')), 'users.xlsx');
+            /* return view('test', [
+              'qes' => \DB::Table('Qes')
+            ->orderBy('Worker')
+            ->join('projects', 'Qes.projectid', '=', 'projects.id')
+            ->join('worker', 'Qes.workerid', '=', 'worker.id')
+            ->join('team', 'worker.teamid', '=', 'team.id')
+            ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+            ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+            ->where('year', '=', $yearAndType->input('year'))//this is the variable part
+            ->orderBy('workerid')->orderBy('projectid')
+            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
+            ->get(),
+            'uienabled' => 'true'
+            ]); */
         }
     }
 }
