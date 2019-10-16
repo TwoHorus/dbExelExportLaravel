@@ -50,7 +50,19 @@ class DatabaseSeeder extends Seeder
         factory(Project::class, 6)->create([]);
         factory(Projecttype::class, 4)->create([]);
         //factory(Qesgroup::class, 100)->create([]);
-        factory(Quarter::class, 20)->create([]);
+        $years = array(2015,2016,2017,2018,2019,2020);
+        $qs = array(1,2,3,4);
+
+        foreach ($years as $key => $year) :
+            foreach ($qs as $k => $q) :
+                  //$possibleQ[$year][] = $q; // changed $variables[] to $variables[$level][]
+                  factory(Quarter::class)->create(['year' => $year,'q' => $q]);
+            endforeach;
+        endforeach;
+
+//echo '<pre>' . print_r($possibleQ, 1) . '</pre>';
+
+        
         //factory(Request::class, 100)->create([]);
         
         //factory(Teamprojectassign::class, 100)->create([]);

@@ -126,6 +126,7 @@
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
+                    <?php echo('<!--' . print_r(\DB::Table('Quarter')->orderBy('year')->select('year', 'q')->get(), 1) . '-->'); ?>
             </div>
         </div>
     </body>
