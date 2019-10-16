@@ -21,6 +21,7 @@ $factory->define(App\Team::class, function (Faker\Generator $faker) {
     ];
 });
 
+
 $factory->define(App\Quarter::class, function (Faker\Generator $faker) {
     return [
         //$table->unique(['year', 'q']); added in migration
@@ -31,10 +32,6 @@ $factory->define(App\Quarter::class, function (Faker\Generator $faker) {
 
     ];
 });
-
-
-    
-
 
 $factory->define(App\Contractmodel::class, function (Faker\Generator $faker) {
     return [

@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Quarter extends Model
 {
     protected $table = 'quarter';
+    
     protected function qes()
     {
-        return $this->hasMany('App\Qes', 'quarterid', 'id'); 
+        return $this->hasMany('App\Qes', 'quarterid', 'id');
     }
     protected $fillable =[
         'year',
