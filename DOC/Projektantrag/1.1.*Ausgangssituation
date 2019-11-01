@@ -1,0 +1,15 @@
+Beschreibung der derzeitigen Ausgangssituation (IST-Zustand)
+
+Die GESIS wird als ein Institut der Leibniz Gesellschaft regelmäßig auf Wirtschaftlichkeit geprüft.
+Für derartige Prüfungen, aber auch für administrative Entscheidungen, werden Daten zum Ressourcenverbrauch erfasst. 
+Dies erfolgt derzeit dezentral von den einzelnen Mitarbeitern in Excel-Sheets. Diese werden anschließend von der Administration manuell zusammengeführt. 
+Der Prozess ist anfällig für Fehler, unflexibel und mit erheblichem manuellem Aufwand verbunden. Änderungen der erfassten Daten sind schwierig. 
+Das QES-(Quartalsdaten-Erhebungs-System)-Projekt wurde mit dem Ziel, den dezentralen Prozess zu zentralisieren, zu automatisieren,
+ zu vereinfachen und vor allem effizienter, weniger fehleranfällig und konfigurierbarer zu gestalten, gestartet. 
+QES ist eine Anwendung, die über einen Webbrowser aufgerufen werden kann. Sie ermöglicht es der Abteilung WTS (Wissenstechnologien für Sozialwissenschaften), 
+die Auslastung der Teams in Bezug auf Projekte zu verfolgen. Es gibt Eingabemasken, Rollen und Gruppen. Die Datenstruktur ermöglicht es dem Abteilungsleiter, 
+zu verfolgen, wer wann in welchem Projekt gearbeitet hat und zu welchem Anteil der Arbeitszeit dies stattfand. 
+Mit QES werden Teams, Projekte, Kostenträger und Arbeitszeitmodelle definiert. Den Mitarbeitern werden Arbeitszeitmodelle und Projekte zugewiesen. 
+Den Teams werden Mitarbeiter und Projekte zugewiesen. Für jedes Quartal werden Soll- und Ist-Stände der Mitarbeiter-Projekt-Verknüpfungen mit aktuellem Arbeitszeitmodell abgespeichert. 
+Wenn ein Mitarbeiter das Team wechselt, wird dies aufgezeichnet, um im Nachhinein die Daten richtig interpretieren zu können. 
+Insgesamt können mit QES z.B. besonders zeitaufwändige Projekte besser identifiziert werden.bearbeiten

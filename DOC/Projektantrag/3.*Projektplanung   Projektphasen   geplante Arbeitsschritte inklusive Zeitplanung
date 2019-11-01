@@ -1,0 +1,81 @@
+ggf. inklusive Angabe der Meilensteine
+
+Gesamt 67 Stunden geplant, exklusive 3 Stunden Puffer. 
+
+Phase Projektinitialisierung:
+Arbeitspakete:
+- AP PI1: Kick-off Meeting mit dem Kunden durchführen (0,5 Stunden) 
+- AP PI2: Projektinitiierung/ -definition abschließen (0,5 Stunden)
+Meilensteine: 
+- M1: Lastenheft (Ergebnis: AP PI1 und AP PI2)
+
+Phase Projektplanung:
+Arbeitspakete:
+- AP P1: Risiken einschätzen und Kosten betrachten (1,5 Stunden)
+- AP P2: Benötigte Funktionalitäten für Controller ermitteln (0,5 Stunden) (Interaktionsübersichtsdiagramm/Struktogramm)
+- AP P3: Verfügbare Komponenten und Lösungen am Markt untersuchen (für Laravel) (2 Stunden) 
+- AP P4: Arbeitspakete planen(2 Stunden)
+- AP P5: Projektphasen, Tätigkeiten, Termine, Meilensteine, Zeiten,Projektablauf , Ressourcen, Kosten, Nutzen planen (3 Stunden)
+- AP P6: Tests anlegen um Qualität zu planen (2 Stunden)
+Meilensteine:
+- M2: Risiko/Kostenbetrachtung erstellt(AP P1)
+- M3: Struktogramm/Interaktionsübersichtsdiagramm für Controller erstellt (AP P2)
+- M4: Marktübersicht verfügbarer Lösungskomponenten erstellt (AP P3)
+- M5: Projektplan erstellt (AP P4 P5 P6)
+
+Phase Projektdurchführung: 
+
+Analyse 2 Stunden 
+Arbeitspakete:
+- AP A1: Machbarkeitsstudie durchführen (2 Stunden) 
+Meilensteine:
+- M6: Machbarkeit bestätigt (AP A1)
+
+Entwurf:
+Arbeitspakete:
+- AP E1: Aus dem Lastenheft das Pflichtenheft erstellen (2 Stunden) 
+- AP E2: Eigenschaften des Models festlegen (1 Stunde) (Klassendiagramm)
+- AP E3: Formular mit Auswahlmöglichkeit zur Generierung entwerfen (4 Stunden) (Entwurfsdokument) 
+- AP E4: Menüpunkt und Controller entwerfen nach Model-View-Controller Konzept unter Beachtung der bestehenden Models(4 Stunden) (Interaktionsübersichtsdiagramm/Struktogramm)
+- AP E5: Download von Excel-Fähiger Datei konzipieren (Im Stil von Mockup) (1 Stunde) (Entwurfsdokument vom Kunden bereitgestellt) 
+- AP E6: Layout mit Kunde absprechen (1 Stunde) (Entwurfsdokument mit Kunde gemeinsam erstellt) 
+Meilensteine:
+- M7: Pflichtenheft erstellt (AP E1)
+- M8: Entwurfsdokumente für die Implementierung erstellt (AP E2 E3 E4 E5)
+- M9: Layout abgenommen (AP E6)
+
+Implementierung:
+Arbeitspakete:
+- AP I1: Route zum Formular und zum Download anlegen (1 Stunde) 
+- AP I2: View-Oberfläche entwickeln und mit Kunde abstimmen (2 Stunden) 
+- AP I3: Mapping implementieren (Daten aus DB -> Excel wie vom Kunden vorgegeben) (1 Stunde) (Mit Hilfe der Entwurfsdokumente)
+- AP I4: Controller erstellen (3 Stunden) 
+- AP I5: View anlegen (3 Stunden) (Mit Hilfe der Entwurfsdokumente)
+- AP I6: Funktion implementieren, die die angefertigte Datei als Download bereitstellt (5 Stunden) (Anhand von Interaktionsübersichtsdiagramm/Struktogramm)
+- AP I7: Qualitätssicherung durch automatisierte Tests (Test Driven Development) mit PHPUnit (4 Stunden) 
+Meilensteine:
+- M10: Routing zwischen Views vollständig implementiert (AP I1)
+- M11: Views funktional gleichwertig zum Mockup, der mit dem Kunden besprochen wurde (AP I2)
+- M12: Datenbankinhalte korrekt zur View übertragen (AP I3)
+- M13: View ist mit korrekten Inhalten erreichbar (AP I4 I5)
+- M14: Download enthält Daten (AP I6)
+- M15: Alle PHPUnit Tests bestanden (AP I7)
+
+Testphase mit Nutzertests:
+Arbeitspakete:
+- AP T1: Funktionalität - Sind alle Funktionen abgedeckt? (2 Stunden)
+- AP T1: Sicherheit - Werden unautorisierte Nutzer zurückgewiesen? (2 Stunden)
+- AP T2: Integrität - Werden die richtigen Mitarbeiter für die Teamleiter ausgewählt? (1 Stunde) 
+                    - Sind alle Teams für den Abteilungsleiter verfügbar?  (1 Stunde)
+Meilensteine:
+- M13: Alle Nutzertests bestanden (AP T1 T2 T3)
+
+Dokumentation erstellen (2 Stunden)
+
+Phase Projektabschluss: 
+Abnahme: 2 Stunden 
+- Demonstration der Funktionalität 
+- Dokumentation an Kunden übergeben
+Erstellung der Projektarbeit (Prozessorientierter Projektbericht) (11 Stunden)
+
+

@@ -1,0 +1,16 @@
+organisatorisch + technisch
+
+GESIS - Leibniz-Institut für Sozialwissenschaften mit Sitz in Köln und Mannheim ist die größte deutsche Infrastruktureinrichtung für die Sozialwissenschaften. 
+Das Institut ist in fünf wissenschaftliche Abteilungen, die mit ihrem forschungsbasierten Service- und Produktangebot den Forschungsprozess der empirischen Sozialforschung in seiner gesamten Breite abdecken, unterteilt. 
+Die Abteilung WTS (Wissenstechnologien für Sozialwissenschaften), für die Johannes Meyerhoff arbeitet, 
+unterstützt die sozialwissenschaftlichen Fachabteilungen durch die Entwicklung innovativer Wissenstechnologien zur Verbesserung der Integration und Nutzerfreundlichkeit der digitalen GESIS-Angebote.
+ Die Haupttätigkeit des Auszubildenden ist die Entwicklung des QES. 
+Der virtuelle Server für die Produktiv-Version ist auf das interne Firmennetz beschränkt. Der Auszubildende, sein Ausbilder und die IT-Abteilung haben administrative Rechte. Die MySQL-Datenbank für QES ist nur von dem Server, 
+auf dem das System läuft, erreichbar 
+Die Anwendung QES läuft auf einem virtualisierten Ubuntu 16 System. QES ist mit dem Laravel PHP Framework nach dem Model-View-Controller Prinzip aufgebaut und verwendet Laravel in der Version 5.4 und PHP mit Version 7.2.14. 
+Auf dem Computer des Auszubildenden ist auch eine Testumgebung mit gleichen Versionen vorhanden. Diese wird jedoch nicht mit VMware, sondern mit Oracle VirtualBox virtualisiert. 
+Die Entwicklungsschritte werden im Firmeninternen Git versioniert. Für einige Funktionen sind bereits automatisierte Tests vorhanden. Hierzu wird die in Laravel 5.4 mitgelieferte Version 5.7.27 von PHPUnit verwendet. 
+Werkzeuge zur Entwicklung sind Atom Editor, iTerm2, GitLab, phpMyAdmin, Mozilla Firefox und Google Chrome. 
+Auftraggeber ist der ehemalige kommissarische Abteilungsleiter der Abteilung WTS. 
+Ansprechpartner bei technischen oder organisatorischen Problemen ist Sascha Schüller. 
+Ansprechpartner bei geschäftsprozessbezogenen Rückfragen ist Thomas Knecht.

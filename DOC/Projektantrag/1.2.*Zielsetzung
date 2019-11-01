@@ -1,0 +1,10 @@
+Was soll nach Abschluss des Projektes erreicht/umgesetzt sein? (SOLL-Zustand)
+
+Ziel ist es, der Abteilungsleitung und auch den Teamleitern eine tabellarische Excel-Übersicht über den tatsächlichen Ressourcenverbrauch pro Mitarbeiter und Projekt sowie Abweichungen von der Soll-Planung zu liefern.
+ Die Übersicht ist eine entscheidende Grundlage für die weitere Ressourcenplanung und soll dynamisch nach Auswahl eines Zeitraums aus den Daten in QES generiert werden. 
+Im QES soll für die Teamleiter und den Abteilungsleiter ein neuer Menüpunkt ergänzt werden. Der Menüpunkt Export soll auf eine Seite führen, auf der der Export definiert und angefordert wird. 
+Der Ablauf ist wie folgt geplant: Der Nutzer wählt einen Zeitraum und anhand dieser Auswahl wird eine Datei erstellt. Dabei erhalten Teamleiter und Abteilungsleiter gemäß ihrer Rolle unterschiedliche Ergebnisse.
+ Die Ergebnis-Dateien stellen den Ressourcenverbrauch pro Mitarbeiter und Projekt dar.
+Je Mitarbeiter wird je Projekt eine eigene Zeile mit dem Soll- und dem Ist-Wert angelegt.
+ Autorisierte Nutzer können dann auf die Export-Dateien für eine bestimmte vorab festgelegte Zeit zugreifen. 
+ Verarbeitung, Konvertierung und Export der Daten auf dem Server müssen konzipiert, implementiert und getestet werden. Leitbild für Entwurf und Umsetzung ist das Model View Controller Konzept.
