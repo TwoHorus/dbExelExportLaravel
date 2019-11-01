@@ -106,8 +106,8 @@ class UsersController extends Controller
     public function handleInquiry(Request $yearAndType)
     {
         $this->validate($yearAndType, [
-            'year' => 'bail|required|integer',
-            'ACTION' => 'string|required',
+            'year' => 'required|integer',
+            'ACTION' => 'bail|string|required',
           ]);
         if ($yearAndType->input('ACTION') == 'preview') {
             return view('test', [
