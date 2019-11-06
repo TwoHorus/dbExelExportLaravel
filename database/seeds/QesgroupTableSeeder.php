@@ -16,7 +16,7 @@ class QesgroupTableSeeder extends Seeder
 
         \DB::table('qesgroup')->delete();
         
-        \DB::table('qesgroup')->insert(array (
+       /*  \DB::table('qesgroup')->insert(array (
             0 =>
             array (
                 'id' => '0',
@@ -53,6 +53,6 @@ class QesgroupTableSeeder extends Seeder
                 'accesslevel' => '7',
                 'name' => 'Verwaltung',
             ),
-        ));
+        )); */
     }
 }

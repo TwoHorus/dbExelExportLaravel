@@ -15,7 +15,7 @@ class ProjectsTableSeeder extends Seeder
     public function run()
     {
         
-        $kt = App\Kostentraeger::all()->pluck('id')->toArray();
+       /*  $kt = App\Kostentraeger::all()->pluck('id')->toArray();
 
         $faker = Faker::create();
 
@@ -51,6 +51,6 @@ class ProjectsTableSeeder extends Seeder
                 'ktid' => $faker->randomElement($kt),
             ),
 
-        ));
+        )); */
     }
 }

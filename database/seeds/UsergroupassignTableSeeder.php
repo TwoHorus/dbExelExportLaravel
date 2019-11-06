@@ -16,7 +16,7 @@ class UsergroupassignTableSeeder extends Seeder
 
         \DB::table('usergroupassign')->delete();
         
-        \DB::table('usergroupassign')->insert(array (
+        /* \DB::table('usergroupassign')->insert(array (
             0 =>
             array (
                 'id' => '156',
@@ -467,6 +467,6 @@ class UsergroupassignTableSeeder extends Seeder
                 'userid' => '83',
                 'qesgroupid' => '1',
             ),
-        ));
+        )); */
     }
 }

@@ -124,7 +124,10 @@ $firstofall=1;
                 'projecttypename' => $entry->project->type->name ?? null,
                 'projectname' => $entry->project->name ?? $entry->pname,
                 'funding' => $entry->project->type->name ?? $entry->ptypename,
-                'kt' => $entry->project->kostentraeger->name ??' ',
+                'drittmittel' => 1,
+                'kt' => $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ',
+                'eg' => $entry->eg,
+                'manhoursinamonth' => $entry->manhoursinamonth,
                 'sender' => 'default',
                 'firstname' => $entry->worker->firstname ?? $entry->firstname,
                 'lastname' => $entry->worker->lastname ?? $entry->lastname,
@@ -147,8 +150,10 @@ $firstofall=1;
 
                 if (isset($row)) {
                     $row->sender = 2;
-                    printCurrentRow($row);// THIS PRINTS our row
-                    $printedProject = 1;
+                    printCurrentRow($row);
+                    $printedProject = 1;}
+                    // THIS PRINTS our row
+                    if (isset($row)){
                     $row = (object)[
                         'dent' => 'project',// NEW LINE
                         'desiredstate1' => ' ',
@@ -162,7 +167,10 @@ $firstofall=1;
                         'projecttypename' => $entry->project->type->name ?? null,
                         'projectname' => $entry->project->name ?? $entry->pname,
                         'funding' => $entry->project->type->name ?? $entry->ptypename,
-                        'kt' => $entry->project->kostentraeger->name ??' ',
+                        'drittmittel' => 0,
+                        'kt' => $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ',
+                        'eg' => $entry->eg,
+                        'manhoursinamonth' => $entry->manhoursinamonth,
                         'sender' => 'default',
                     'firstname' => $entry->worker->firstname ?? $entry->firstname,
                     'lastname' => $entry->worker->lastname ?? $entry->lastname,

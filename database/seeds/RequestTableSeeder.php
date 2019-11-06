@@ -16,7 +16,7 @@ class RequestTableSeeder extends Seeder
 
         \DB::table('request')->delete();
         
-        \DB::table('request')->insert(array (
+      /*   \DB::table('request')->insert(array (
             0 =>
             array (
                 'id' => '1',
@@ -255,6 +255,6 @@ class RequestTableSeeder extends Seeder
                 'teamid' => '6',
                 'time' => '2019-01-25 09:35:13.0',
             ),
-        ));
+        )); */
     }
 }

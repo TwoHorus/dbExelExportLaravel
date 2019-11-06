@@ -16,7 +16,7 @@ class WorkerTableSeeder extends Seeder
 
         \DB::table('worker')->delete();
         
-        \DB::table('worker')->insert(array (
+        /* \DB::table('worker')->insert(array (
             0 =>
             array (
                 'id' => '38',
@@ -26,6 +26,6 @@ class WorkerTableSeeder extends Seeder
                 'teamid' => '10',
                 'contractmodelid' => null,
             ),
-        ));
+        )); */
     }
 }

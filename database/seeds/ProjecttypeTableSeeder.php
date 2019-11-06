@@ -16,7 +16,7 @@ class ProjecttypeTableSeeder extends Seeder
 
         \DB::table('projecttype')->delete();
         
-        \DB::table('projecttype')->insert(array (
+       /*  \DB::table('projecttype')->insert(array (
             0 =>
             array (
                 'id' => '1',
@@ -32,6 +32,6 @@ class ProjecttypeTableSeeder extends Seeder
                 'id' => '3',
                 'name' => 'drittmittelfinanziert',
             ),
-        ));
+        )); */
     }
 }

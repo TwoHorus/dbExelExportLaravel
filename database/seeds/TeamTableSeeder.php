@@ -16,7 +16,7 @@ class TeamTableSeeder extends Seeder
 
         \DB::table('team')->delete();
         
-        \DB::table('team')->insert(array (
+        /* \DB::table('team')->insert(array (
             0 =>
             array (
                 'id' => '2',
@@ -62,6 +62,6 @@ class TeamTableSeeder extends Seeder
                 'id' => '11',
                 'name' => 'Sieben',
             ),
-        ));
+        )); */
     }
 }

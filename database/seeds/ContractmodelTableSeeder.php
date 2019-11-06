@@ -16,7 +16,7 @@ class ContractmodelTableSeeder extends Seeder
 
         \DB::table('contractmodel')->delete();
         
-        \DB::table('contractmodel')->insert(array (
+       /* \DB::table('contractmodel')->insert(array (
             0 =>
             array (
                 'id' => '28',
@@ -41,6 +41,6 @@ class ContractmodelTableSeeder extends Seeder
                 'manmonthsinaquarter' => '3.0',
                 'timescale' => null,
             ),
-        ));
+        ));*/
     }
 }

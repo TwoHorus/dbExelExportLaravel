@@ -15,7 +15,7 @@ class KostentraegerTableSeeder extends Seeder
     public function run()
     {
         
-        $faker = Faker::create();
+       /*  $faker = Faker::create();
 
         \DB::table('kostentraeger')->delete();
         
@@ -112,6 +112,6 @@ class KostentraegerTableSeeder extends Seeder
         ,
             ),
 
-        ));
+        )); */
     }
 }

@@ -16,7 +16,7 @@ class WorkerprojectassignTableSeeder extends Seeder
 
         \DB::table('workerprojectassign')->delete();
         
-        \DB::table('workerprojectassign')->insert(array (
+       /*  \DB::table('workerprojectassign')->insert(array (
             0 =>
             array (
                 'id' => '73',
@@ -24,6 +24,6 @@ class WorkerprojectassignTableSeeder extends Seeder
                 'workerid' => '44',
                 'soll' => null,
             ),
-        ));
+        )); */
     }
 }

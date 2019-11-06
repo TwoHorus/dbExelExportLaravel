@@ -32,9 +32,10 @@ class UsersController extends Controller
             ->join('team', 'worker.teamid', '=', 'team.id')
             ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
             ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+            ->join('kostentraeger', 'projects.ktid','=','kostentraeger.id')
             ->where('year', '=', 2016)//this is the variable part
             ->orderBy('workerid')->orderBy('projectid')
-            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
+            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename')
             ->get()]);
 
 
@@ -53,10 +54,11 @@ class UsersController extends Controller
         ->join('team', 'worker.teamid', '=', 'team.id')
         ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+        ->join('kostentraeger', 'projects.ktid','=','kostentraeger.id')
         //->where('lastname', '=', 'Yost')
         ->where('year', '=', 2020)
         ->orderBy('workerid')->orderBy('projectid')
-        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
+        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename')
         ->get();
         $sortx5 = $unsort;
         //$sortx5 = collect($unsort);
@@ -118,9 +120,11 @@ class UsersController extends Controller
             ->join('team', 'worker.teamid', '=', 'team.id')
             ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
             ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+            ->join('contractmodel','worker.contractmodelid','=','contractmodel.id')
+            ->join('kostentraeger', 'projects.ktid','=','kostentraeger.id')
             ->where('year', '=', $yearAndType->input('year'))//this is the variable part
             ->orderBy('workerid')->orderBy('projectid')
-            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
+            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')
             ->get(),
             'uienabled' => 'true'
             ]);

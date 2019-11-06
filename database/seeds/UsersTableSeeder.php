@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
 
         \DB::table('users')->delete();
         
-        \DB::table('users')->insert(array (
+        /* \DB::table('users')->insert(array (
             0 =>
             array (
                 'id' => '50',
@@ -28,6 +28,6 @@ class UsersTableSeeder extends Seeder
                 'isworkerid' => '38',
                 'email' => null,
             ),
-        ));
+        )); */
     }
 }

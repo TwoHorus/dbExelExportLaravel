@@ -34,10 +34,12 @@ $factory->define(App\Quarter::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Contractmodel::class, function (Faker\Generator $faker) {
+    
+    $work=$faker->numberBetween(0,320);
     return [
-        'name' => $faker->name,
-        'manhoursinamonth' => $faker->randomFloat(),
-        'manmonthsinaquarter' => $faker->randomFloat(),
+        'name' => 'A'.$faker->numberBetween(1,15),
+        'manhoursinamonth' => $work,
+        'manmonthsinaquarter' => ($work*4),
         'timescale' => $faker->randomFloat(),
     ];
 });
@@ -51,28 +53,29 @@ $factory->define(App\Projecttype::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Project::class, function (Faker\Generator $faker) {
+    $kt = App\Kostentraeger::all()->pluck('id')->toArray();
     return [
         'name' => $faker->name,
         'shortdescription' => $faker->text,
         'projecttypeid' => function () {
              return factory(App\Projecttype::class)->create()->id;
         },
-        'ktid' => $faker->randomNumber(),
+        'ktid' => $faker->randomElement($kt),
     ];
 });
 
 $factory->define(App\Worker::class, function (Faker\Generator $faker) {
 
     $teams = App\Team::all()->pluck('id')->toArray();
+    $ctm = App\Contractmodel::all()->pluck('id')->toArray();
 
     return [
         'lastname' => $faker->lastName,
         'firstname' => $faker->firstName,
         'email' => $faker->safeEmail,
         'teamid' => $faker->randomElement($teams),
-        'contractmodelid' => function () {
-             return factory(App\Contractmodel::class)->create()->id;
-        },
+        'contractmodelid' => $faker->randomElement($ctm)
+          
     ];
 });
 

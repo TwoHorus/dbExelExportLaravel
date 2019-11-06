@@ -6,7 +6,7 @@ function printCurrentRow(object $finishedrow)
     echo '<tr>';
     if ($finishedrow->dent=='new') {
         ?>
-<td style="color:#FFAEFF"> 
+<td style="color:#000000"> 
         <?php echo($finishedrow->firstname.'&nbsp;');?>
 
 
@@ -17,9 +17,9 @@ function printCurrentRow(object $finishedrow)
 
 </td>
 
-<td style="color:#F0AE0F"><?php echo( 1 );?></td> <!-- $entry->quarter->q-->
+<td style="color:#000000"><?php echo( $finishedrow->eg );?></td> <!-- $entry->quarter->q-->
 
-<td style="color:#F0AE0F"><?php echo( 2 );?></td>   <!--$entry->quarterid -->
+<td style="color:#000000"><?php echo( round($finishedrow->manhoursinamonth/1.60, 2) );?></td>   <!--$entry->quarterid -->
 
 <td><?php echo( $finishedrow->teamname );?></td>
 
@@ -38,14 +38,14 @@ function printCurrentRow(object $finishedrow)
 
 <!-- @indent(5) -->
 
-<td style="color:#F0AC0F">
+<td style="color:#000000">
     <?php
 
     echo $finishedrow->funding ?? '&nbsp' ;
 
     ?></td>
 
-<td style="color:#F0AC0F">
+<td style="color:#000000">
     <?php
 
     echo $finishedrow->projectname ?? '&nbsp';
@@ -53,7 +53,7 @@ function printCurrentRow(object $finishedrow)
 
     ?></td>
 
-<td style="color:#F0AC0F">
+<td style="color:#000000">
     <?php
 
     echo $finishedrow->kt ?? '&nbsp';
@@ -62,7 +62,8 @@ function printCurrentRow(object $finishedrow)
     ?></td>
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->desiredstate1 ?? '&nbsp';
@@ -71,7 +72,8 @@ function printCurrentRow(object $finishedrow)
     ?></td>
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->actualstate1 ?? '&nbsp';
@@ -84,7 +86,8 @@ function printCurrentRow(object $finishedrow)
 
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->desiredstate2 ?? '&nbsp';
@@ -93,7 +96,8 @@ function printCurrentRow(object $finishedrow)
     ?></td>
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->actualstate2 ?? '&nbsp';
@@ -105,7 +109,8 @@ function printCurrentRow(object $finishedrow)
 
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->desiredstate3 ?? '&nbsp';
@@ -114,7 +119,8 @@ function printCurrentRow(object $finishedrow)
     ?></td>
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->actualstate3 ?? '&nbsp';
@@ -127,7 +133,8 @@ function printCurrentRow(object $finishedrow)
 
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->desiredstate4 ?? '&nbsp';
@@ -136,7 +143,8 @@ function printCurrentRow(object $finishedrow)
     ?></td>
 
 
-<td style="color:#F0AC0F">
+<td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
+} ?>style="color:#000000">
     <?php
 
     echo $finishedrow->actualstate4 ?? '&nbsp';
