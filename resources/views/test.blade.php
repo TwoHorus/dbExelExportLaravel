@@ -124,7 +124,7 @@ $firstofall=1;
                 'projecttypename' => $entry->project->type->name ?? null,
                 'projectname' => $entry->project->name ?? $entry->pname,
                 'funding' => $entry->project->type->name ?? $entry->ptypename,
-                'drittmittel' => 1,
+                'drittmittel' => 0,
                 'kt' => $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ',
                 'eg' => $entry->eg,
                 'manhoursinamonth' => $entry->manhoursinamonth,
@@ -151,27 +151,26 @@ $firstofall=1;
                 if (isset($row)) {
                     $row->sender = 2;
                     printCurrentRow($row);
-                    $printedProject = 1;}
-                    // THIS PRINTS our row
-                    if (isset($row)){
+                    $printedProject = 1;
+                
                     $row = (object)[
-                        'dent' => 'project',// NEW LINE
-                        'desiredstate1' => ' ',
-                        'actualstate1' => ' ',
-                        'desiredstate2' => ' ',
-                        'actualstate2' => ' ',
-                        'desiredstate3' => ' ',
-                        'actualstate3' => ' ',
-                        'desiredstate4' => ' ',
-                        'actualstate4' => ' ',
-                        'projecttypename' => $entry->project->type->name ?? null,
-                        'projectname' => $entry->project->name ?? $entry->pname,
-                        'funding' => $entry->project->type->name ?? $entry->ptypename,
-                        'drittmittel' => 0,
-                        'kt' => $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ',
-                        'eg' => $entry->eg,
-                        'manhoursinamonth' => $entry->manhoursinamonth,
-                        'sender' => 'default',
+                    'dent' => 'project',// NEW LINE
+                    'desiredstate1' => ' ',
+                    'actualstate1' => ' ',
+                    'desiredstate2' => ' ',
+                    'actualstate2' => ' ',
+                    'desiredstate3' => ' ',
+                    'actualstate3' => ' ',
+                    'desiredstate4' => ' ',
+                    'actualstate4' => ' ',
+                    'projecttypename' => $entry->project->type->name ?? null,
+                    'projectname' => $entry->project->name ?? $entry->pname,
+                    'funding' => $entry->project->type->name ?? $entry->ptypename,
+                    'drittmittel' => 0,
+                    'kt' => $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ',
+                    'eg' => $entry->eg,
+                    'manhoursinamonth' => $entry->manhoursinamonth,
+                    'sender' => 'default',
                     'firstname' => $entry->worker->firstname ?? $entry->firstname,
                     'lastname' => $entry->worker->lastname ?? $entry->lastname,
                     'teamname' => $entry->worker->team->name ?? $entry->tname,

@@ -32,7 +32,7 @@ class UsersController extends Controller
             ->join('team', 'worker.teamid', '=', 'team.id')
             ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
             ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-            ->join('kostentraeger', 'projects.ktid','=','kostentraeger.id')
+            ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
             ->where('year', '=', 2016)//this is the variable part
             ->orderBy('workerid')->orderBy('projectid')
             ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename')
@@ -54,7 +54,7 @@ class UsersController extends Controller
         ->join('team', 'worker.teamid', '=', 'team.id')
         ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-        ->join('kostentraeger', 'projects.ktid','=','kostentraeger.id')
+        ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
         //->where('lastname', '=', 'Yost')
         ->where('year', '=', 2020)
         ->orderBy('workerid')->orderBy('projectid')
@@ -107,6 +107,16 @@ class UsersController extends Controller
 
     public function handleInquiry(Request $yearAndType)
     {
+        $ids = QES::groupBy(['workerid','projectid','quarterid'])
+            
+            ->select('id')
+            ->get();
+           //$ids=QES::get()->all();
+           
+           //dd(QES::whereNotIn('id', $ids)->get());
+            //die();
+            QES::whereNotIn('id', $ids)->delete();
+        
         $this->validate($yearAndType, [
             'year' => 'bail|required|integer',
             'ACTION' => 'bail|string|required',
@@ -120,8 +130,8 @@ class UsersController extends Controller
             ->join('team', 'worker.teamid', '=', 'team.id')
             ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
             ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-            ->join('contractmodel','worker.contractmodelid','=','contractmodel.id')
-            ->join('kostentraeger', 'projects.ktid','=','kostentraeger.id')
+            ->join('contractmodel', 'worker.contractmodelid', '=', 'contractmodel.id')
+            ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
             ->where('year', '=', $yearAndType->input('year'))//this is the variable part
             ->orderBy('workerid')->orderBy('projectid')
             ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')

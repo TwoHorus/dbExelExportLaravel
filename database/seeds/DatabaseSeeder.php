@@ -39,18 +39,19 @@ class DatabaseSeeder extends Seeder
         $this->call(WorkerTableSeeder::class);
         $this->call(WorkerprojectassignTableSeeder::class);
 
-        //factory(Worker::class, 50)->create([]);
+        //
         factory(Team::class, 4)->create([]);
         factory(Contractmodel::class, 19)->create([]);
 
-        factory(Kostentraeger::class, 100)->create([]);
+        factory(Kostentraeger::class, 16)->create([]);
 
         factory(Projecttype::class, 4)->create([]);
-        factory(User::class, 7)->create([]);
+        factory(User::class, 17)->create([]);
         //factory(Accepted::class, 100)->create([]);
         //factory(Admins::class, 100)->create([]);
         
-        factory(Project::class, 6)->create([]);
+        factory(Project::class, 29)->create([]);
+        //factory(Worker::class, 50)->create([]);
         //factory(Qesgroup::class, 100)->create([]);
         $years = array(2015,2016,2017,2018,2019,2020);
         $qs = array(1,2,3,4);
@@ -71,6 +72,6 @@ class DatabaseSeeder extends Seeder
         //factory(Usergroupassign::class, 100)->create([]);
         //factory(Workerprojectassign::class, 100)->create([]);
 
-        factory(Qes::class, 2000)->create([]);
+        factory(Qes::class, 9000)->create([]);
     }
 }
