@@ -121,6 +121,21 @@ class UsersController extends Controller
             'year' => 'bail|required|integer',
             'ACTION' => 'bail|string|required',
           ]);
+         // echo ($yearAndType->input('year'));
+         /* dd(\DB::Table('Qes')
+          ->orderBy('Worker')
+          ->join('projects', 'Qes.projectid', '=', 'projects.id')
+          ->join('worker', 'Qes.workerid', '=', 'worker.id')
+          ->join('team', 'worker.teamid', '=', 'team.id')
+          ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+          ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+          ->join('contractmodel', 'worker.contractmodelid', '=', 'contractmodel.id')
+          ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
+          ->where('year', '=', $yearAndType->input('year'))//this is the variable part
+          ->orderBy('workerid')->orderBy('projectid')
+          ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')
+          ->get());*/
+          //die();
         if ($yearAndType->input('ACTION') == 'preview') {
             return view('test', [
               'qes' => \DB::Table('Qes')
