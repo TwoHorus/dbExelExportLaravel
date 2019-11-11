@@ -48,33 +48,23 @@ if (isset($uienabled)) {
         $lastyear = 4000;
     }
     if (isset($entry)) {
+        echo ("<tr><td>entry set</td></tr>"); 
         $entry = null;
         $valx = null;
         $qes = null;
         $filter = null;
 //Suppressing warnings.
     }
+    if (isset($qes)){
+        echo ("<tr><td>qes set</td></tr>");
+    }
+    
     $first = 3;
     ?>
     @foreach($qes as $filter => $valx)
         <?php // <!--THIS NEEEDS TO GO SOMEWHERE!!!!<tr> currently placed-->
 
-        
-        if (!isset($valx->quarter)) {
-            //dump($valx);
-            if (!($valx->year >= $firstyear) &&
-            ($valx->year <= $lastyear)) {
-                    unset($qes[$filter]);
-            }
-
-            //$valx->quarter->year = ;
-            //die();
-        } elseif (!($valx->quarter->year >= $firstyear) &&
-            ($valx->quarter->year <= $lastyear)) {
-                    unset($qes[$filter]);
-        }
-        
-        
+      
         
         ?>
 
@@ -111,6 +101,22 @@ $firstofall=1;
                 */
                 }
             }
+
+
+
+            echo($entry->project->type->name ?? null);
+            echo( $entry->project->name ?? $entry->pname);
+            echo( $entry->project->type->name ?? $entry->ptypename);
+            echo( $entry->workerid .'WORKERID');
+            echo( $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ');
+            echo($entry->eg);
+            echo( $entry->manhoursinamonth);
+            echo( 'default');
+            echo( $entry->worker->firstname ?? $entry->firstname);
+            echo( $entry->worker->lastname ?? $entry->lastname);
+            echo ($entry->worker->team->name ?? $entry->tname);
+
+
             $row = (object)[
                 'dent' => 'new',// NEW LINE
                 'desiredstate1' => ' ',
@@ -142,6 +148,7 @@ $firstofall=1;
             if ($entry->projectid== $projectid) {
                 $notfirst=0;
             }
+            $debugview=1;
             if (($entry->projectid != $projectid )&& ($printedProject == 0) && ($first == 0)&& $notfirst==2) {//the first is false
                 if ($debugview==1) {
                     echo 'x';
