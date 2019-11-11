@@ -164,11 +164,12 @@ class UsersController extends Controller
                             break;
                     }
                 } else {
+                    $currentproject=$datapoint->projectid;//UPDATE PROJECT
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
                     $row = (object)[
-                    'workerid' => $datapoint->workerid,
-                    'projectid' => $datapoint->projectid,
+                    'workerid' => ' ',
+                    'projectid' => ' ',
                     'dent' => 'new',// NEW LINE
                     'desiredstate1' => ' ',
                     'actualstate1' => ' ',
@@ -183,12 +184,12 @@ class UsersController extends Controller
                     'funding' => $datapoint->project->type->name ?? $datapoint->ptypename,
                     'drittmittel' => 0,
                     'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? ' ',
-                    'eg' => $datapoint->eg,
-                    'manhoursinamonth' => $datapoint->manhoursinamonth,
+                    'eg' => '',// LATER ADD AS FEATURE
+                    'manhoursinamonth' => 'X',
                     'sender' => 'default',
-                    'firstname' => $datapoint->worker->firstname ?? $datapoint->firstname,
-                    'lastname' => $datapoint->worker->lastname ?? $datapoint->lastname,
-                    'teamname' => $datapoint->worker->team->name ?? $datapoint->tname,
+                    'firstname' => ' ',
+                    'lastname' => ' ',
+                    'teamname' => ' ',
                     ];
                 //READING Q DATA DYNAMICALLY
                     switch ($datapoint->quarter->q ?? $datapoint->q) {
