@@ -57,44 +57,39 @@ if (isset($uienabled)) {
     }
     if (isset($qes)){
         echo ("<tr><td>qes set</td></tr>");
-       // dd($qes);
     }
-    $firstofall=0;
+    
     $first = 3;
     ?>
-   
-<?php
+    @foreach($qes as $filter => $valx)
+<?php // <!--THIS NEEEDS TO GO SOMEWHERE!!!!<tr> currently placed-->
+?>
 
+    @endforeach
+<?php
+$firstofall=1;
 ?>
     @foreach($qes as $entry)
 
 
         <?php
-        //dump($entry);
-        //die();
                 //This is the main LOOP
         //THINK ABOUT PRINTEDPROJECT!!!!
         if (!isset($entry->workerid)) {
             echo "error";
         }
         
-        if (isset($entry->workerid)&&!($entry->workerid == $userid)) {// are we not on the same person?
-        
+        if (!($entry->workerid == $userid)||($firstofall==1)) {// are we not on the same person?
             $userid = $entry->workerid;//set the id for the next foreach
-            
+            $notfirst=0;
 
             if ($debugview==1) {
-                echo ("<tr><td>2 set</td></tr>");
                 echo "|->";
             }
             if (isset($row)) {
-                echo ("<tr><td>3 set</td></tr>");
                 if ($firstofall==1) {
-                    echo ("<tr><td>4 set</td></tr>");
                     $firstofall=0;//NEED TO FIX ONLY ONE ENTRY FOR FIRST PROJECT AND WORKER
-                } else {
-                    echo ("<tr><td>5 set</td></tr>");/*
-                    
+                } else {/*
                     $first = 1;
                     $row->sender = 1;
                     printCurrentRow($row);// THIS PRINTS our row NOT yet
@@ -106,7 +101,19 @@ if (isset($uienabled)) {
 
 
 
-            echo ("<tr><td>rowobj set</td></tr>");
+            echo($entry->project->type->name ?? null);
+            echo( $entry->project->name ?? $entry->pname);
+            echo( $entry->project->type->name ?? $entry->ptypename);
+            echo( $entry->workerid .'WORKERID');
+            echo( $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ');
+            echo($entry->eg);
+            echo( $entry->manhoursinamonth);
+            echo( 'default');
+            echo( $entry->worker->firstname ?? $entry->firstname);
+            echo( $entry->worker->lastname ?? $entry->lastname);
+            echo ($entry->worker->team->name ?? $entry->tname);
+
+
             $row = (object)[
                 'dent' => 'new',// NEW LINE
                 'desiredstate1' => ' ',
@@ -117,78 +124,39 @@ if (isset($uienabled)) {
                 'actualstate3' => ' ',
                 'desiredstate4' => ' ',
                 'actualstate4' => ' ',
-                'projecttypename' => $entry->projecttypename ?? null,
-                'projectname' => $entry->project->name ?? $entry->projectname,
-                'funding' => $entry->project->type->name ?? $entry->funding,
+                'projecttypename' => $entry->project->type->name ?? null,
+                'projectname' => $entry->project->name ?? $entry->pname,
+                'funding' => $entry->project->type->name ?? $entry->ptypename,
                 'drittmittel' => 0,
-                'kt' => $entry->project->kostentraeger->name ?? $entry->kt ?? ' ',
+                'kt' => $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ',
                 'eg' => $entry->eg,
                 'manhoursinamonth' => $entry->manhoursinamonth,
                 'sender' => 'default',
                 'firstname' => $entry->worker->firstname ?? $entry->firstname,
                 'lastname' => $entry->worker->lastname ?? $entry->lastname,
-                'teamname' => $entry->worker->team->name ?? $entry->teamname,
+                'teamname' => $entry->worker->team->name ?? $entry->tname,
             ];
-        } else {
-            echo ("<tr><td>6 set</td></tr>");// User is the same
+        } else {// User is the same
             if ($first == 2) {
-                echo ("<tr><td>7 set</td></tr>");
                // $row->dent = 'project';
                 //$first = 1;
             }
-           
-            
+           // echo $notfirst;
+            if ($entry->projectid== $projectid) {
+                $notfirst=0;
+            }
             $debugview=1;
-            if (($entry->projectid != $projectid )&& ($printedProject == 0)) {
-                echo ("<tr><td>8 set</td></tr>");
-                //the first is false
+            if (($entry->projectid != $projectid )&& ($printedProject == 0) && ($first == 0)&& $notfirst==2) {//the first is false
                 if ($debugview==1) {
                     echo 'x';
                 }
                 $projectid = $entry->projectid;// set the id for the next foreach
 
                 if (isset($row)) {
-                    echo ("<tr><td>9 set</td></tr>");
                     $row->sender = 2;
-
-                    if("x".$row->desiredstate1.$row->desiredstate2.$row->desiredstate3.
-                    $row->desiredstate4.$row->actualstate1.$row->actualstate2.$row->actualstate3.
-                    $row->actualstate4=='x        '&&$printedProject == 1){
-                        if ($debugview==1) {
-                            echo "_";
-                        }
-                        $printedProject = 0;
-                        if ($first == 1) {
-                            $projectid = $entry->projectid;
-                            $row->sender = 3;
-                            //printCurrentRow($row);//WE ARE printing with empty sollist
-                        }
-                        $first = 0;
-        
-                        $row->desiredstate1 = $datapoint->desiredstate1 ?? ' ';
-                        $row->actualstate1 = $datapoint->actualstate1 ?? ' ';
-                       
-                        $row->desiredstate2 = $datapoint->desiredstate2 ?? ' ';
-                        $row->actualstate2 = $datapoint->actualstate2 ?? ' ';
-                        
-                        $row->desiredstate3 = $datapoint->desiredstate3 ?? ' ';
-                        $row->actualstate3 = $datapoint->actualstate3 ?? ' ';
-                       
-                        $row->desiredstate4 = $datapoint->desiredstate4 ?? ' ';
-                        $row->actualstate4 = $datapoint->actualstate4 ?? ' ';
-                        
-                    }else{
-                      
                     printCurrentRow($row);
                     $printedProject = 1;
                 
-                    }
-
-                    printCurrentRow($row);
-                    $printedProject = 1;
-                
-
-
                     $row = (object)[
                     'dent' => 'project',// NEW LINE
                     'desiredstate1' => ' ',
@@ -200,16 +168,16 @@ if (isset($uienabled)) {
                     'desiredstate4' => ' ',
                     'actualstate4' => ' ',
                     'projecttypename' => $entry->project->type->name ?? null,
-                    'projectname' => $entry->project->name ?? $entry->projectname,
-                    'funding' => $entry->project->type->name ?? $entry->funding,
+                    'projectname' => $entry->project->name ?? $entry->pname,
+                    'funding' => $entry->project->type->name ?? $entry->ptypename,
                     'drittmittel' => 0,
-                    'kt' => $entry->project->kostentraeger->name ?? $entry->kt ?? ' ',
+                    'kt' => $entry->project->kostentraeger->name ?? $entry->ktypename ?? ' ',
                     'eg' => $entry->eg,
                     'manhoursinamonth' => $entry->manhoursinamonth,
                     'sender' => 'default',
                     'firstname' => $entry->worker->firstname ?? $entry->firstname,
                     'lastname' => $entry->worker->lastname ?? $entry->lastname,
-                    'teamname' => $entry->worker->team->name ?? $entry->teamname,
+                    'teamname' => $entry->worker->team->name ?? $entry->tname,
 
                     ];
                 }//WE ARE NOT ARRIVING HERE
@@ -221,7 +189,7 @@ if (isset($uienabled)) {
                 //$row->projectname = $entry->project->name;
                // $row->kt = $entry->project->kostentraeger->name ?? 'test';
             } else {// same person same project
-          
+                $notfirst++;
 
                 if ($debugview==1) {
                     echo "_";
@@ -234,25 +202,32 @@ if (isset($uienabled)) {
                 }
                 $first = 0;
 
-                $row->desiredstate1 = $datapoint->desiredstate1 ?? ' ';
-                $row->actualstate1 = $datapoint->actualstate1 ?? ' ';
-               
-                $row->desiredstate2 = $datapoint->desiredstate2 ?? ' ';
-                $row->actualstate2 = $datapoint->actualstate2 ?? ' ';
-                
-                $row->desiredstate3 = $datapoint->desiredstate3 ?? ' ';
-                $row->actualstate3 = $datapoint->actualstate3 ?? ' ';
-               
-                $row->desiredstate4 = $datapoint->desiredstate4 ?? ' ';
-                $row->actualstate4 = $datapoint->actualstate4 ?? ' ';
-                
+                switch ($entry->quarter->q ?? $entry->q) {
+                    case '1':
+                        $row->desiredstate1 = $entry->desiredstate;
+                        $row->actualstate1 = $entry->actualstate;
+                        break;
+                    case '2':
+                        $row->desiredstate2 = $entry->desiredstate;
+                        $row->actualstate2 = $entry->actualstate;
+                        break;
+                    case '3':
+                        $row->desiredstate3 = $entry->desiredstate;
+                        $row->actualstate3 = $entry->actualstate;
+                        break;
+                    case '4':
+                        $row->desiredstate4 = $entry->desiredstate;
+                        $row->actualstate4 = $entry->actualstate;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
         ?>
 
     @endforeach
-
     <?php
 
     ?>
