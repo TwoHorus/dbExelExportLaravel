@@ -212,6 +212,7 @@ class UsersController extends Controller
             } else {
                 $currentworker = $datapoint->workerid; //WORKER IS WORKERNOW
                 if ($firstmismatch==1) {//SPECIAL FIRST ROW ONLY
+                    $currentproject=$datapoint->projectid;
                     $firstmismatch=0;
                     //FIRST ROW IS NULL NOW
                 } else {
