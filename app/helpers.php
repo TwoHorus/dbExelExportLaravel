@@ -64,7 +64,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate1 - $finishedrow->desiredstate1)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate1 - $finishedrow->actualstate1)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>
     <?php
 
@@ -76,7 +76,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate1 - $finishedrow->desiredstate1)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate1 - $finishedrow->actualstate1)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>>
     <?php
 
@@ -92,7 +92,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate1 - $finishedrow->desiredstate1)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate1 - $finishedrow->actualstate1)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>>
     <?php
 
@@ -104,7 +104,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate1 - $finishedrow->desiredstate1)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate1 - $finishedrow->actualstate1)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>>
     <?php
 
@@ -119,7 +119,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate2 - $finishedrow->desiredstate2)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate2 - $finishedrow->actualstate2)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>>
     <?php
 
@@ -131,7 +131,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate3 - $finishedrow->desiredstate3)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate3 - $finishedrow->actualstate3)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>>
     <?php
 
@@ -147,7 +147,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate4 - $finishedrow->desiredstate4)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate4 - $finishedrow->actualstate4)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>>
     <?php
 
@@ -159,7 +159,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td <?php if($finishedrow->drittmittel==1){ echo ('bgcolor="#C2C5CC"');
 } ?>
-<?php if(abs($finishedrow->desiredstate4 - $finishedrow->desiredstate4)>=20){ echo ('style="color:#CD0000"');
+<?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)&&abs($finishedrow->desiredstate4 - $finishedrow->actualstate4)>=20){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');} ?>>>
     <?php
 
