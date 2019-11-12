@@ -1,6 +1,6 @@
 <?php
 
-function printCurrentRow(object $finishedrow)
+function printCurrentRow(stdClass $finishedrow)
 {
     //
     echo '<tr>';
