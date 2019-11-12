@@ -66,7 +66,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate1 - $finishedrow->actualstate1+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>
     <?php
 
     echo $finishedrow->desiredstate1 ?? '&nbsp';
@@ -79,7 +79,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate1 - $finishedrow->actualstate1+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>>
     <?php
 
     echo $finishedrow->actualstate1 ?? '&nbsp';
@@ -93,7 +93,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate1 - $finishedrow->actualstate1+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>>
     <?php
 
     echo $finishedrow->desiredstate2 ?? '&nbsp';
@@ -106,7 +106,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate1 - $finishedrow->actualstate1+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>>
     <?php
 
     echo $finishedrow->actualstate2 ?? '&nbsp';
@@ -122,7 +122,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate2 - $finishedrow->actualstate2+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>>
     <?php
 
     echo $finishedrow->desiredstate3 ?? '&nbsp';
@@ -135,7 +135,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate3 - $finishedrow->actualstate3+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>>
     <?php
 
     echo $finishedrow->actualstate3 ?? '&nbsp';
@@ -152,7 +152,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate4 - $finishedrow->actualstate4+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>>
     <?php
 
     echo $finishedrow->desiredstate4 ?? '&nbsp';
@@ -165,7 +165,7 @@ function printCurrentRow(stdClass $finishedrow)
 } ?>
 <?php if(is_numeric($finishedrow->desiredstate1)&&is_numeric($finishedrow->actualstate1)){
     // NOT WORKING NUMERIC VALUEif((($finishedrow->desiredstate4 - $finishedrow->actualstate4+1))>21){ echo ('style="color:#CD0000"');
-}else{echo('style="color:#000000"');}} ?>>>
+}else{echo('style="color:#000000"');}/*}*/ ?>>>
     <?php
 
     echo $finishedrow->actualstate4 ?? '&nbsp';
