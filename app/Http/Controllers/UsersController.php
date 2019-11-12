@@ -25,7 +25,6 @@ class UsersController extends Controller
     {
         return view('test', [
         'qes' => \DB::Table('qes')
-        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -47,7 +46,6 @@ class UsersController extends Controller
         $sortx3 = $unsort->sortBy('workerid');
 
         $unsort = \DB::Table('qes')
-        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -122,7 +120,6 @@ class UsersController extends Controller
         ]);
     // echo ($yearAndType->input('year'));
         $objecthere=\DB::Table('qes')
-        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -275,7 +272,6 @@ class UsersController extends Controller
             return view('test', ['qes' => $rows,'uienabled' => 'true' ]);
         /*return view('test', [
         'qes' => \DB::Table('qes')
-        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -294,7 +290,6 @@ class UsersController extends Controller
             return Excel::download(new UsersExport($yearAndType->input('year')), 'users.xlsx');
         /* return view('test', [
         'qes' => \DB::Table('qes')
-        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
