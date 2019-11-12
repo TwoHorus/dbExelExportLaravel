@@ -41,14 +41,14 @@ function printCurrentRow(stdClass $finishedrow)
 <td style="color:#000000">
     <?php
 
-    echo $finishedrow->funding ?? '&nbsp' ;
+    echo $finishedrow->funding ?? '&nbsp;' ;
 
     ?></td>
 
 <td style="color:#000000">
     <?php
 
-    echo $finishedrow->projectname ?? '&nbsp';
+    echo $finishedrow->projectname ?? '&nbsp;';
 
 
     ?></td>
@@ -56,7 +56,7 @@ function printCurrentRow(stdClass $finishedrow)
 <td style="color:#000000">
     <?php
 
-    echo $finishedrow->kt ?? '&nbsp';
+    echo $finishedrow->kt ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
@@ -69,7 +69,7 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->desiredstate1 ?? '&nbsp';
+    echo $finishedrow->desiredstate1 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
@@ -82,7 +82,7 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->actualstate1 ?? '&nbsp';
+    echo $finishedrow->actualstate1 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
@@ -96,7 +96,7 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->desiredstate2 ?? '&nbsp';
+    echo $finishedrow->desiredstate2 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
@@ -109,9 +109,9 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->actualstate2 ?? '&nbsp';
+    echo $finishedrow->actualstate2 ?? '&nbsp;';
 
-//LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
+//LOGIK ZUM NTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
 
 
@@ -125,7 +125,7 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->desiredstate3 ?? '&nbsp';
+    echo $finishedrow->desiredstate3 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
@@ -138,7 +138,7 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->actualstate3 ?? '&nbsp';
+    echo $finishedrow->actualstate3 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
@@ -155,7 +155,7 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->desiredstate4 ?? '&nbsp';
+    echo $finishedrow->desiredstate4 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
@@ -168,7 +168,7 @@ function printCurrentRow(stdClass $finishedrow)
 }else{echo('style="color:#000000"');}} ?>>
     <?php
 
-    echo $finishedrow->actualstate4 ?? '&nbsp';
+    echo $finishedrow->actualstate4 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
     ?></td>
