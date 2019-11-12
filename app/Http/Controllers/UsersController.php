@@ -268,8 +268,8 @@ class UsersController extends Controller
                 } else {
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
-                    $rows[] = $sumrow;
-                    $rows[] = $emptyrow;
+                //    $rows[] = $sumrow;
+                //    $rows[] = $emptyrow;
                 }
             //THEN READ NEW DATA TO NEW ROW OBJECT
                 $row = (object)[
