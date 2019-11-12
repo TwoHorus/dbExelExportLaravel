@@ -26,7 +26,6 @@ class UsersExport implements FromView
     public function view(): View
     {
         $objecthere=\DB::Table('qes')
-        ->orderBy('Worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
