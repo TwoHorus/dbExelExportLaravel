@@ -25,12 +25,12 @@ class UsersController extends Controller
     {
 
         return view('test', [
-        'qes' => \DB::Table('Qes')
+        'qes' => \DB::Table('qes')
         ->orderBy('Worker')
-        ->join('projects', 'Qes.projectid', '=', 'projects.id')
-        ->join('worker', 'Qes.workerid', '=', 'worker.id')
+        ->join('projects', 'qes.projectid', '=', 'projects.id')
+        ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
         ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
         ->where('year', '=', 2016)//this is the variable part
@@ -47,12 +47,12 @@ class UsersController extends Controller
         $unsort = Qes::all()->sortBy('projectid');
         $sortx3 = $unsort->sortBy('workerid');
 
-        $unsort = \DB::Table('Qes')
+        $unsort = \DB::Table('qes')
         ->orderBy('Worker')
-        ->join('projects', 'Qes.projectid', '=', 'projects.id')
-        ->join('worker', 'Qes.workerid', '=', 'worker.id')
+        ->join('projects', 'qes.projectid', '=', 'projects.id')
+        ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
         ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
     //->where('lastname', '=', 'Yost')
@@ -80,7 +80,7 @@ class UsersController extends Controller
 
     public function homeselect()
     {
-        $user = Qes::all();
+       // $user = Qes::all();
     //return $user;
     /* foreach ($user as $XX) {
     echo $XX->worker.'</br>';
@@ -122,12 +122,12 @@ class UsersController extends Controller
         'ACTION' => 'bail|string|required',
         ]);
     // echo ($yearAndType->input('year'));
-        $objecthere=\DB::Table('Qes')
+        $objecthere=\DB::Table('qes')
         ->orderBy('Worker')
-        ->join('projects', 'Qes.projectid', '=', 'projects.id')
-        ->join('worker', 'Qes.workerid', '=', 'worker.id')
+        ->join('projects', 'qes.projectid', '=', 'projects.id')
+        ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
         ->join('contractmodel', 'worker.contractmodelid', '=', 'contractmodel.id')
         ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
@@ -275,12 +275,12 @@ class UsersController extends Controller
         if ($yearAndType->input('ACTION') == 'preview') {
             return view('test', ['qes' => $rows,'uienabled' => 'true' ]);
         /*return view('test', [
-        'qes' => \DB::Table('Qes')
+        'qes' => \DB::Table('qes')
         ->orderBy('Worker')
-        ->join('projects', 'Qes.projectid', '=', 'projects.id')
-        ->join('worker', 'Qes.workerid', '=', 'worker.id')
+        ->join('projects', 'qes.projectid', '=', 'projects.id')
+        ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
         ->join('contractmodel', 'worker.contractmodelid', '=', 'contractmodel.id')
         ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
@@ -294,12 +294,12 @@ class UsersController extends Controller
         if ($yearAndType->input('ACTION') == 'export') {
             return Excel::download(new UsersExport($yearAndType->input('year')), 'users.xlsx');
         /* return view('test', [
-        'qes' => \DB::Table('Qes')
+        'qes' => \DB::Table('qes')
         ->orderBy('Worker')
-        ->join('projects', 'Qes.projectid', '=', 'projects.id')
-        ->join('worker', 'Qes.workerid', '=', 'worker.id')
+        ->join('projects', 'qes.projectid', '=', 'projects.id')
+        ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'Qes.quarterid', '=', 'quarter.id')
+        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
         ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
         ->where('year', '=', $yearAndType->input('year'))//this is the variable part
         ->orderBy('workerid')->orderBy('projectid')
