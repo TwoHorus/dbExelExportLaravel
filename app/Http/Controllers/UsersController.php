@@ -105,8 +105,8 @@ class UsersController extends Controller
     public function handleInquiry(Request $yearAndType)
     {
         $sumrow = (object)[
-            'workerid' => ' ',
-            'projectid' => ' ',
+            'workerid' => null,
+            'projectid' => null,
             'dent' => 'new',// NEW LINE
             'desiredstate1' => '=SUM(I1:I5)',
             'actualstate1' => '=SUM(J1:J5)',
@@ -117,40 +117,40 @@ class UsersController extends Controller
             'desiredstate4' => '=SUM(O1:O5)',
             'actualstate4' => '=SUM(P1:P5)',
             'projecttypename' => '',
-            'projectname' => ' ',
+            'projectname' => null,
             'funding' => '',
             'drittmittel' => '',
-            'kt' => ' ',
+            'kt' => null,
             'eg' => '',// LATER ADD AS FEATURE
-            'manhoursinamonth' => ' ',
+            'manhoursinamonth' => null,
             'sender' => 'default',
-            'firstname' => ' ',
-            'lastname' => ' ',
-            'teamname' => ' ',
+            'firstname' => null,
+            'lastname' => null,
+            'teamname' => null,
             ];
             $emptyrow= (object)[
-                'workerid' => ' ',
-                'projectid' => ' ',
+                'workerid' => null,
+                'projectid' => null,
                 'dent' => 'new',// NEW LINE
                 'desiredstate1' => '',
                 'actualstate1' => '',
                 'desiredstate2' => '',
-                'actualstate2' => ' ',
-                'desiredstate3' => ' ',
-                'actualstate3' => ' ',
-                'desiredstate4' => ' ',
-                'actualstate4' => ' ',
+                'actualstate2' => null,
+                'desiredstate3' => null,
+                'actualstate3' => null,
+                'desiredstate4' => null,
+                'actualstate4' => null,
                 'projecttypename' => '',
-                'projectname' => ' ',
+                'projectname' => null,
                 'funding' => '',
                 'drittmittel' => '',
-                'kt' => ' ',
+                'kt' => null,
                 'eg' => '',// LATER ADD AS FEATURE
-                'manhoursinamonth' => ' ',
+                'manhoursinamonth' => null,
                 'sender' => 'default',
-                'firstname' => ' ',
-                'lastname' => ' ',
-                'teamname' => ' ',
+                'firstname' => null,
+                'lastname' => null,
+                'teamname' => null,
                 ];
 
 
@@ -214,28 +214,28 @@ class UsersController extends Controller
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
                     $row = (object)[
-                    'workerid' => ' ',
-                    'projectid' => ' ',
+                    'workerid' => null,
+                    'projectid' => null,
                     'dent' => 'new',// NEW LINE
-                    'desiredstate1' => ' ',
-                    'actualstate1' => ' ',
-                    'desiredstate2' => ' ',
-                    'actualstate2' => ' ',
-                    'desiredstate3' => ' ',
-                    'actualstate3' => ' ',
-                    'desiredstate4' => ' ',
-                    'actualstate4' => ' ',
+                    'desiredstate1' => null,
+                    'actualstate1' => null,
+                    'desiredstate2' => null,
+                    'actualstate2' => null,
+                    'desiredstate3' => null,
+                    'actualstate3' => null,
+                    'desiredstate4' => null,
+                    'actualstate4' => null,
                     'projecttypename' => $datapoint->project->type->name ?? null,
                     'projectname' => $datapoint->project->name ?? $datapoint->pname,
                     'funding' => $datapoint->project->type->name ?? $datapoint->ptypename,
                     'drittmittel' => 0,
-                    'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? ' ',
+                    'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? null,
                     'eg' => '',// LATER ADD AS FEATURE
                     'manhoursinamonth' => 'X',
                     'sender' => 'default',
-                    'firstname' => ' ',
-                    'lastname' => ' ',
-                    'teamname' => ' ',
+                    'firstname' => null,
+                    'lastname' => null,
+                    'teamname' => null,
                     ];
                 //READING Q DATA DYNAMICALLY
                     switch ($datapoint->quarter->q ?? $datapoint->q) {
@@ -276,19 +276,19 @@ class UsersController extends Controller
                 'workerid' => $datapoint->workerid,
                 'projectid' => $datapoint->projectid,
                 'dent' => 'new',// NEW LINE
-                'desiredstate1' => ' ',
-                'actualstate1' => ' ',
-                'desiredstate2' => ' ',
-                'actualstate2' => ' ',
-                'desiredstate3' => ' ',
-                'actualstate3' => ' ',
-                'desiredstate4' => ' ',
-                'actualstate4' => ' ',
+                'desiredstate1' => null,
+                'actualstate1' => null,
+                'desiredstate2' => null,
+                'actualstate2' => null,
+                'desiredstate3' => null,
+                'actualstate3' => null,
+                'desiredstate4' => null,
+                'actualstate4' => null,
                 'projecttypename' => $datapoint->project->type->name ?? null,
                 'projectname' => $datapoint->project->name ?? $datapoint->pname,
                 'funding' => $datapoint->project->type->name ?? $datapoint->ptypename,
                 'drittmittel' => 0,
-                'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? ' ',
+                'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? null,
                 'eg' => $datapoint->eg,
                 'manhoursinamonth' => $datapoint->manhoursinamonth,
                 'sender' => 'default',
@@ -327,7 +327,7 @@ class UsersController extends Controller
 
     $rows[] = $row;
 
-    
+
         if ($yearAndType->input('ACTION') == 'preview') {
             return view('test', ['qes' => $rows,'uienabled' => 'true' ]);
         /*return view('test', [
