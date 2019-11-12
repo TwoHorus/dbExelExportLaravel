@@ -23,10 +23,9 @@ class UsersController extends Controller
     }
     public function exportPreview()
     {
-
         return view('test', [
         'qes' => \DB::Table('qes')
-        ->orderBy('Worker')
+        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -48,7 +47,7 @@ class UsersController extends Controller
         $sortx3 = $unsort->sortBy('workerid');
 
         $unsort = \DB::Table('qes')
-        ->orderBy('Worker')
+        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -71,7 +70,7 @@ class UsersController extends Controller
     //where('quarterid', '=', '33')->orWhere('quarterid', '=', '30')->get()
 
     /* NOT NEEDED:
-    'worker' => Worker::all(),
+    'worker' => worker::all(),
     'users' => User::all(),
     'projects' => Project::all(),
     'types' => Projecttype::all(),*/
@@ -100,7 +99,7 @@ class UsersController extends Controller
         'qes' => Qes::all()->sortByDesc('projectid')->sortByDesc('workerid'),
 
     //'users' => User::all(),
-    // 'workers' => Worker::all(),
+    // 'workers' => worker::all(),
 
         ]);
     }
@@ -123,7 +122,7 @@ class UsersController extends Controller
         ]);
     // echo ($yearAndType->input('year'));
         $objecthere=\DB::Table('qes')
-        ->orderBy('Worker')
+        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -276,7 +275,7 @@ class UsersController extends Controller
             return view('test', ['qes' => $rows,'uienabled' => 'true' ]);
         /*return view('test', [
         'qes' => \DB::Table('qes')
-        ->orderBy('Worker')
+        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
@@ -295,7 +294,7 @@ class UsersController extends Controller
             return Excel::download(new UsersExport($yearAndType->input('year')), 'users.xlsx');
         /* return view('test', [
         'qes' => \DB::Table('qes')
-        ->orderBy('Worker')
+        ->orderBy('worker')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
         ->join('team', 'worker.teamid', '=', 'team.id')
