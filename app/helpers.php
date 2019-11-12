@@ -178,7 +178,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 
     <?php
-}
+}// END FUNCTION
 
 
 
