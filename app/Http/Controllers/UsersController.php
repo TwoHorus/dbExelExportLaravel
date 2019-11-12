@@ -112,9 +112,9 @@ class UsersController extends Controller
         ->select('id')
         ->get();
     //$ids=QES::where('workerid','=',"")->get();
-    dd($ids);
+    //dd($ids);
     //dd(QES::whereNotIn('id', $ids)->get());
-     die();
+     //die();
         //QES::whereNotIn('id', $ids)->delete();
 
         $this->validate($yearAndType, [
