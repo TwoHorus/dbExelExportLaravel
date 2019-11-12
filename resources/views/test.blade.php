@@ -12,9 +12,9 @@ if (isset($uienabled)) {
 <table border=1 style="border-collapse: collapse;padding-left:10px;">
     <thead>
     <tr>
-        <th>Name</th>
         <th>Vorname</th>
-        <th>EG</th>
+        <th>Nachname</th>
+        <th>AZ Modell</th>
         <th>AZ</th>
         <th>Team</th>
         <th>Finanzierung</th>

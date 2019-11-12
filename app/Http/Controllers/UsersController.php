@@ -104,6 +104,56 @@ class UsersController extends Controller
 
     public function handleInquiry(Request $yearAndType)
     {
+        $sumrow = (object)[
+            'workerid' => ' ',
+            'projectid' => ' ',
+            'dent' => 'new',// NEW LINE
+            'desiredstate1' => '=SUM(I1:I5)',
+            'actualstate1' => '=SUM(J1:J5)',
+            'desiredstate2' => '=SUM(K1:K5)',
+            'actualstate2' => ' ',
+            'desiredstate3' => ' ',
+            'actualstate3' => ' ',
+            'desiredstate4' => ' ',
+            'actualstate4' => ' ',
+            'projecttypename' => '',
+            'projectname' => ' ',
+            'funding' => '',
+            'drittmittel' => '',
+            'kt' => ' ',
+            'eg' => '',// LATER ADD AS FEATURE
+            'manhoursinamonth' => ' ',
+            'sender' => 'default',
+            'firstname' => ' ',
+            'lastname' => ' ',
+            'teamname' => ' ',
+            ];
+            $emptyrow= (object)[
+                'workerid' => ' ',
+                'projectid' => ' ',
+                'dent' => 'new',// NEW LINE
+                'desiredstate1' => '',
+                'actualstate1' => '',
+                'desiredstate2' => '',
+                'actualstate2' => ' ',
+                'desiredstate3' => ' ',
+                'actualstate3' => ' ',
+                'desiredstate4' => ' ',
+                'actualstate4' => ' ',
+                'projecttypename' => '',
+                'projectname' => ' ',
+                'funding' => '',
+                'drittmittel' => '',
+                'kt' => ' ',
+                'eg' => '',// LATER ADD AS FEATURE
+                'manhoursinamonth' => ' ',
+                'sender' => 'default',
+                'firstname' => ' ',
+                'lastname' => ' ',
+                'teamname' => ' ',
+                ];
+
+
         $ids = QES::groupBy(['workerid','projectid','quarterid','id'])
 
         ->select('id')
@@ -218,6 +268,8 @@ class UsersController extends Controller
                 } else {
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
+                    $rows[] = $sumrow;
+                    $rows[] = $emptyrow;
                 }
             //THEN READ NEW DATA TO NEW ROW OBJECT
                 $row = (object)[

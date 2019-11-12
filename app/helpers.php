@@ -19,7 +19,7 @@ function printCurrentRow(stdClass $finishedrow)
 
 <td style="color:#000000"><?php echo( $finishedrow->eg );?></td> <!-- $entry->quarter->q-->
 
-<td style="color:#000000"><?php if($finishedrow->manhoursinamonth!='X')echo( round($finishedrow->manhoursinamonth/1.60, 2) );?></td>   <!--$entry->quarterid -->
+<td style="color:#000000"><?php if($finishedrow->manhoursinamonth!='X')echo( round($finishedrow->manhoursinamonth, 2) );?></td>   <!--$entry->quarterid -->
 
 <td><?php echo( $finishedrow->teamname );?></td>
 
