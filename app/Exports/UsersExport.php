@@ -38,16 +38,16 @@ class UsersExport implements FromView
             'desiredstate4' => '=SUM(O1:O5)',
             'actualstate4' => '=SUM(P1:P5)',
             'projecttypename' => '',
-            'projectname' => null,
+            'projectname' => ' ',
             'funding' => '',
             'drittmittel' => '',
             'kt' => null,
             'eg' => '',// LATER ADD AS FEATURE
             'manhoursinamonth' => null,
             'sender' => 'default',
-            'firstname' => null,
-            'lastname' => null,
-            'teamname' => null,
+            'firstname' => ' ',
+            'lastname' => ' ',
+            'teamname' => ' ',
             ];
             $emptyrow= (object)[
                 'workerid' => null,
@@ -62,16 +62,16 @@ class UsersExport implements FromView
                 'desiredstate4' => null,
                 'actualstate4' => null,
                 'projecttypename' => '',
-                'projectname' => null,
+                'projectname' => ' ',
                 'funding' => '',
                 'drittmittel' => '',
                 'kt' => null,
                 'eg' => '',// LATER ADD AS FEATURE
                 'manhoursinamonth' => null,
                 'sender' => 'default',
-                'firstname' => null,
-                'lastname' => null,
-                'teamname' => null,
+                'firstname' => ' ',
+                'lastname' => ' ',
+                'teamname' => ' ',
                 ];
 
 
@@ -139,9 +139,9 @@ class UsersExport implements FromView
                     'eg' => '',// LATER ADD AS FEATURE
                     'manhoursinamonth' => 'X',
                     'sender' => 'default',
-                    'firstname' => null,
-                    'lastname' => null,
-                    'teamname' => null,
+                    'firstname' => ' ',
+                    'lastname' => ' ',
+                    'teamname' => ' ',
                     ];
                 //READING Q DATA DYNAMICALLY
                     switch ($datapoint->quarter->q ?? $datapoint->q) {
