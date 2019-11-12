@@ -319,8 +319,15 @@ class UsersController extends Controller
                 }
             }
         }
+
     //dd($rows);
     //die();
+
+    //PUT LAST ROW!!!
+
+    $rows[] = $row;
+
+    
         if ($yearAndType->input('ACTION') == 'preview') {
             return view('test', ['qes' => $rows,'uienabled' => 'true' ]);
         /*return view('test', [
