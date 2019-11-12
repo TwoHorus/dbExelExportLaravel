@@ -107,15 +107,15 @@ class UsersController extends Controller
 
     public function handleInquiry(Request $yearAndType)
     {
-        $ids = QES::groupBy(['workerid','projectid','quarterid'])
+        $ids = QES::groupBy(['workerid','projectid','quarterid','id'])
 
         ->select('id')
         ->get();
     //$ids=QES::where('workerid','=',"")->get();
-    //dd($ids);
+    dd($ids);
     //dd(QES::whereNotIn('id', $ids)->get());
-    // die();
-        QES::whereNotIn('id', $ids)->delete();
+     die();
+        //QES::whereNotIn('id', $ids)->delete();
 
         $this->validate($yearAndType, [
         'year' => 'bail|required|integer',
