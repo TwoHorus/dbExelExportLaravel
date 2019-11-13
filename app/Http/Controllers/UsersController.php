@@ -347,7 +347,7 @@ class UsersController extends Controller
         ]);*/
         }
         if ($yearAndType->input('ACTION') == 'export') {
-            return Excel::download(new UsersExport($yearAndType->input('year')), 'users.xlsx');
+            return Excel::download(new UsersExport($yearAndType->input('year')), 'QES_'.$yearAndType->input('year').'.xlsx');
         /* return view('test', [
         'qes' => \DB::Table('qes')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
