@@ -137,7 +137,7 @@ function printCurrentRow(stdClass $finishedrow)
     if(abs(($finishedrow->desiredstate3 - $finishedrow->actualstate3))>19){ echo ('style="color:#CD0000"');
 }else{echo('style="color:#000000"');}} ?>>
     <?php
-
+echo abs(($finishedrow->desiredstate3 - $finishedrow->actualstate3));
     echo $finishedrow->actualstate3 ?? '&nbsp;';
 
 //LOGIK ZUM ENTSCHEIDEN OB Q1, Q2 oder Q3 ???
