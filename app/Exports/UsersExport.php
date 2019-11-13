@@ -25,56 +25,58 @@ class UsersExport implements FromView
 
     public function view(): View
     {
-        $sumrow = (object)[
-            'workerid' => null,
-            'projectid' => null,
-            'dent' => 'new',// NEW LINE
-            'desiredstate1' => '=SUM(I1:I5)',
-            'actualstate1' => '=SUM(J1:J5)',
-            'desiredstate2' => '=SUM(K1:K5)',
-            'actualstate2' => '=SUM(L1:L5)',
-            'desiredstate3' => '=SUM(M1:M5)',
-            'actualstate3' => '=SUM(N1:N5)',
-            'desiredstate4' => '=SUM(O1:O5)',
-            'actualstate4' => '=SUM(P1:P5)',
-            'projecttypename' => '',
-            'projectname' => ' ',
-            'funding' => '',
-            'drittmittel' => '',
-            'kt' => null,
-            'eg' => '',// LATER ADD AS FEATURE
-            'manhoursinamonth' => null,
-            'sender' => 'default',
-            'firstname' => ' ',
-            'lastname' => ' ',
-            'teamname' => ' ',
-            ];
-            $emptyrow= (object)[
-                'workerid' => null,
-                'projectid' => null,
-                'dent' => 'new',// NEW LINE
-                'desiredstate1' => '',
-                'actualstate1' => '',
-                'desiredstate2' => '',
-                'actualstate2' => null,
-                'desiredstate3' => null,
-                'actualstate3' => null,
-                'desiredstate4' => null,
-                'actualstate4' => null,
-                'projecttypename' => '',
-                'projectname' => ' ',
-                'funding' => '',
-                'drittmittel' => '',
-                'kt' => null,
-                'eg' => '',// LATER ADD AS FEATURE
-                'manhoursinamonth' => null,
-                'sender' => 'default',
-                'firstname' => ' ',
-                'lastname' => ' ',
-                'teamname' => ' ',
-                ];
+    /*
+    FEATURE FOR LATER
+    $sumrow = (object)[
+    'workerid' => null,
+    'projectid' => null,
+    'dent' => 'new',// NEW LINE
+    'desiredstate1' => '=SUM(I1:I5)',
+    'actualstate1' => '=SUM(J1:J5)',
+    'desiredstate2' => '=SUM(K1:K5)',
+    'actualstate2' => '=SUM(L1:L5)',
+    'desiredstate3' => '=SUM(M1:M5)',
+    'actualstate3' => '=SUM(N1:N5)',
+    'desiredstate4' => '=SUM(O1:O5)',
+    'actualstate4' => '=SUM(P1:P5)',
+    'projecttypename' => '',
+    'projectname' => ' ',
+    'funding' => '',
+    'drittmittel' => '',
+    'kt' => null,
+    'eg' => '',// LATER ADD AS FEATURE
+    'manhoursinamonth' => null,
+    'sender' => 'default',
+    'firstname' => ' ',
+    'lastname' => ' ',
+    'teamname' => ' ',
+    ];
+    $emptyrow= (object)[
+    'workerid' => null,
+    'projectid' => null,
+    'dent' => 'new',// NEW LINE
+    'desiredstate1' => '',
+    'actualstate1' => '',
+    'desiredstate2' => '',
+    'actualstate2' => null,
+    'desiredstate3' => null,
+    'actualstate3' => null,
+    'desiredstate4' => null,
+    'actualstate4' => null,
+    'projecttypename' => '',
+    'projectname' => ' ',
+    'funding' => '',
+    'drittmittel' => '',
+    'kt' => null,
+    'eg' => '',// LATER ADD AS FEATURE
+    'manhoursinamonth' => null,
+    'sender' => 'default',
+    'firstname' => ' ',
+    'lastname' => ' ',
+    'teamname' => ' ',
+    ];
 
-
+    */
         $objecthere=\DB::Table('qes')
         ->join('projects', 'qes.projectid', '=', 'projects.id')
         ->join('worker', 'qes.workerid', '=', 'worker.id')
@@ -174,8 +176,8 @@ class UsersExport implements FromView
                 } else {
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
-                   // $rows[] = $sumrow;
-                   // $rows[] = $emptyrow;
+                // $rows[] = $sumrow;
+                // $rows[] = $emptyrow;
                 }
             //THEN READ NEW DATA TO NEW ROW OBJECT
                 $row = (object)[

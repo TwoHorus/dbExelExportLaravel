@@ -228,8 +228,5 @@ function indent($int)
 {
     $x="
 <td  colspan=".($int).">&nbsp;</td>";
-   /* for ($i=0; $i<$int; $i++) {
-        $x = $x.'<td>&nbsp;</td>';
-    }*/
     return $x;
 };
