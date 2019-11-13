@@ -225,6 +225,7 @@ class UsersExport implements FromView
                 }
             }
         }
+        $rows[] = $row;
         return view('test', ['qes' => $rows,'uienabled' => 'false' ]);
     }
 }
