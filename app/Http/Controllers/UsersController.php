@@ -77,7 +77,7 @@ class UsersController extends Controller
 
     public function homeselect()
     {
-       // $user = Qes::all();
+    // $user = Qes::all();
     //return $user;
     /* foreach ($user as $XX) {
     echo $XX->worker.'</br>';
@@ -127,31 +127,32 @@ class UsersController extends Controller
             'firstname' => ' ',
             'lastname' => ' ',
             'teamname' => ' ',
-            ];
-            $emptyrow= (object)[
-                'workerid' => null,
-                'projectid' => null,
-                'dent' => 'new',// NEW LINE
-                'desiredstate1' => '',
-                'actualstate1' => '',
-                'desiredstate2' => '',
-                'actualstate2' => null,
-                'desiredstate3' => null,
-                'actualstate3' => null,
-                'desiredstate4' => null,
-                'actualstate4' => null,
-                'projecttypename' => '',
-                'projectname' => ' ',
-                'funding' => '',
-                'drittmittel' => '',
-                'kt' => null,
-                'eg' => '',// LATER ADD AS FEATURE
-                'manhoursinamonth' => null,
-                'sender' => 'default',
-                'firstname' => ' ',
-                'lastname' => ' ',
-                'teamname' => ' ',
-                ];
+        ];
+
+        $emptyrow= (object)[
+            'workerid' => null,
+            'projectid' => null,
+            'dent' => 'new',// NEW LINE
+            'desiredstate1' => '',
+            'actualstate1' => '',
+            'desiredstate2' => '',
+            'actualstate2' => null,
+            'desiredstate3' => null,
+            'actualstate3' => null,
+            'desiredstate4' => null,
+            'actualstate4' => null,
+            'projecttypename' => '',
+            'projectname' => ' ',
+            'funding' => '',
+            'drittmittel' => '',
+            'kt' => null,
+            'eg' => '',// LATER ADD AS FEATURE
+            'manhoursinamonth' => null,
+            'sender' => 'default',
+            'firstname' => ' ',
+            'lastname' => ' ',
+            'teamname' => ' ',
+        ];
 
 
         $ids = QES::groupBy(['workerid','projectid','quarterid','id'])
@@ -161,8 +162,8 @@ class UsersController extends Controller
     //$ids=QES::where('workerid','=',"")->get();
     //dd($ids);
     //dd(QES::whereNotIn('id', $ids)->get());
-     //die();
-        //QES::whereNotIn('id', $ids)->delete();
+    //die();
+    //QES::whereNotIn('id', $ids)->delete();
 
         $this->validate($yearAndType, [
         'year' => 'bail|required|integer',
@@ -170,16 +171,16 @@ class UsersController extends Controller
         ]);
     // echo ($yearAndType->input('year'));
         $objecthere=\DB::Table('qes')
-        ->join('projects', 'qes.projectid', '=', 'projects.id')
-        ->join('worker', 'qes.workerid', '=', 'worker.id')
-        ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
-        ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-        ->join('contractmodel', 'worker.contractmodelid', '=', 'contractmodel.id')
-        ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
-        ->where('year', '=', $yearAndType->input('year'))//this is the variable part
-        ->orderBy('workerid')->orderBy('projectid')
-        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')
+            ->join('projects', 'qes.projectid', '=', 'projects.id')
+            ->join('worker', 'qes.workerid', '=', 'worker.id')
+            ->join('team', 'worker.teamid', '=', 'team.id')
+            ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
+            ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
+            ->join('contractmodel', 'worker.contractmodelid', '=', 'contractmodel.id')
+            ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
+            ->where('year', '=', $yearAndType->input('year'))//this is the variable part
+            ->orderBy('workerid')->orderBy('projectid')
+            ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')
         ->get();
         $rows=[];
         $currentworker=-1;
@@ -199,8 +200,8 @@ class UsersController extends Controller
                             $row->actualstate2 = $datapoint->actualstate;
                             break;
                         case '3':
-                                $row->desiredstate3 = $datapoint->desiredstate;
-                                $row->actualstate3 = $datapoint->actualstate;
+                                    $row->desiredstate3 = $datapoint->desiredstate;
+                                    $row->actualstate3 = $datapoint->actualstate;
                             break;
                         case '4':
                                 $row->desiredstate4 = $datapoint->desiredstate;
@@ -214,28 +215,28 @@ class UsersController extends Controller
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
                     $row = (object)[
-                    'workerid' => null,
-                    'projectid' => null,
-                    'dent' => 'new',// NEW LINE
-                    'desiredstate1' => null,
-                    'actualstate1' => null,
-                    'desiredstate2' => null,
-                    'actualstate2' => null,
-                    'desiredstate3' => null,
-                    'actualstate3' => null,
-                    'desiredstate4' => null,
-                    'actualstate4' => null,
-                    'projecttypename' => $datapoint->project->type->name ?? ' ',
-                    'projectname' => $datapoint->project->name ?? $datapoint->pname,
-                    'funding' => $datapoint->project->type->name ?? $datapoint->ptypename,
-                    'drittmittel' => 0,
-                    'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? ' ' ,
-                    'eg' => '',// LATER ADD AS FEATURE
-                    'manhoursinamonth' => 'X',
-                    'sender' => 'default',
-                    'firstname' => ' ',
-                    'lastname' => ' ',
-                    'teamname' => ' ',
+                        'workerid' => null,
+                        'projectid' => null,
+                        'dent' => 'new',// NEW LINE
+                        'desiredstate1' => null,
+                        'actualstate1' => null,
+                        'desiredstate2' => null,
+                        'actualstate2' => null,
+                        'desiredstate3' => null,
+                        'actualstate3' => null,
+                        'desiredstate4' => null,
+                        'actualstate4' => null,
+                        'projecttypename' => $datapoint->project->type->name ?? ' ',
+                        'projectname' => $datapoint->project->name ?? $datapoint->pname,
+                        'funding' => $datapoint->project->type->name ?? $datapoint->ptypename,
+                        'drittmittel' => 0,
+                        'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? ' ' ,
+                        'eg' => '',// LATER ADD AS FEATURE
+                        'manhoursinamonth' => 'X',
+                        'sender' => 'default',
+                        'firstname' => ' ',
+                        'lastname' => ' ',
+                        'teamname' => ' ',
                     ];
                 //READING Q DATA DYNAMICALLY
                     switch ($datapoint->quarter->q ?? $datapoint->q) {
@@ -273,28 +274,28 @@ class UsersController extends Controller
                 }
             //THEN READ NEW DATA TO NEW ROW OBJECT
                 $row = (object)[
-                'workerid' => $datapoint->workerid,
-                'projectid' => $datapoint->projectid,
-                'dent' => 'new',// NEW LINE
-                'desiredstate1' => null,
-                'actualstate1' => null,
-                'desiredstate2' => null,
-                'actualstate2' => null,
-                'desiredstate3' => null,
-                'actualstate3' => null,
-                'desiredstate4' => null,
-                'actualstate4' => null,
-                'projecttypename' => $datapoint->project->type->name ?? ' ',
-                'projectname' => $datapoint->project->name ?? $datapoint->pname,
-                'funding' => $datapoint->project->type->name ?? $datapoint->ptypename,
-                'drittmittel' => 0,
-                'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? ' ' ,
-                'eg' => $datapoint->eg,
-                'manhoursinamonth' => $datapoint->manhoursinamonth,
-                'sender' => 'default',
-                'firstname' => $datapoint->worker->firstname ?? $datapoint->firstname,
-                'lastname' => $datapoint->worker->lastname ?? $datapoint->lastname,
-                'teamname' => $datapoint->worker->team->name ?? $datapoint->tname,
+                    'workerid' => $datapoint->workerid,
+                    'projectid' => $datapoint->projectid,
+                    'dent' => 'new',// NEW LINE
+                    'desiredstate1' => null,
+                    'actualstate1' => null,
+                    'desiredstate2' => null,
+                    'actualstate2' => null,
+                    'desiredstate3' => null,
+                    'actualstate3' => null,
+                    'desiredstate4' => null,
+                    'actualstate4' => null,
+                    'projecttypename' => $datapoint->project->type->name ?? ' ',
+                    'projectname' => $datapoint->project->name ?? $datapoint->pname,
+                    'funding' => $datapoint->project->type->name ?? $datapoint->ptypename,
+                    'drittmittel' => 0,
+                    'kt' => $datapoint->project->kostentraeger->name ?? $datapoint->ktypename ?? ' ' ,
+                    'eg' => $datapoint->eg,
+                    'manhoursinamonth' => $datapoint->manhoursinamonth,
+                    'sender' => 'default',
+                    'firstname' => $datapoint->worker->firstname ?? $datapoint->firstname,
+                    'lastname' => $datapoint->worker->lastname ?? $datapoint->lastname,
+                    'teamname' => $datapoint->worker->team->name ?? $datapoint->tname,
                 ];
             //READING Q DATA DYNAMICALLY
                 switch ($datapoint->quarter->q ?? $datapoint->q) {
@@ -319,48 +320,13 @@ class UsersController extends Controller
                 }
             }
         }
-
-    //dd($rows);
-    //die();
-
     //PUT LAST ROW!!!
-
-    $rows[] = $row;
-
-
+        $rows[] = $row;
         if ($yearAndType->input('ACTION') == 'preview') {
             return view('test', ['qes' => $rows,'uienabled' => 'true' ]);
-        /*return view('test', [
-        'qes' => \DB::Table('qes')
-        ->join('projects', 'qes.projectid', '=', 'projects.id')
-        ->join('worker', 'qes.workerid', '=', 'worker.id')
-        ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
-        ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-        ->join('contractmodel', 'worker.contractmodelid', '=', 'contractmodel.id')
-        ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
-        ->where('year', '=', $yearAndType->input('year'))//this is the variable part
-        ->orderBy('workerid')->orderBy('projectid')
-        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')
-        ->get(),
-        'uienabled' => 'true'
-        ]);*/
         }
         if ($yearAndType->input('ACTION') == 'export') {
             return Excel::download(new UsersExport($yearAndType->input('year')), 'QES_'.$yearAndType->input('year').'.xlsx');
-        /* return view('test', [
-        'qes' => \DB::Table('qes')
-        ->join('projects', 'qes.projectid', '=', 'projects.id')
-        ->join('worker', 'qes.workerid', '=', 'worker.id')
-        ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
-        ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-        ->where('year', '=', $yearAndType->input('year'))//this is the variable part
-        ->orderBy('workerid')->orderBy('projectid')
-        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename')
-        ->get(),
-        'uienabled' => 'true'
-        ]); */
         }
     }
 }
