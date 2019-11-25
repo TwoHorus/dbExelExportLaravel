@@ -21,83 +21,20 @@ class UsersController extends Controller
     {
         return Excel::download(new UsersExport(), 'users.xlsx');
     }
-    public function exportPreview()
-    {
-        return view('test', [
-        'qes' => \DB::Table('qes')
-        ->join('projects', 'qes.projectid', '=', 'projects.id')
-        ->join('worker', 'qes.workerid', '=', 'worker.id')
-        ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
-        ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-        ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
-        ->where('year', '=', 2016)//this is the variable part
-        ->orderBy('workerid')->orderBy('projectid')
-        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename')
-        ->get()]);
-
-
-
-
-        $unsort = Qes::all();//->sortBy('workerid');
-        $sortx2 = $unsort->sortBy('workerid'.'projectid');
-    //echo($sortx2);
-        $unsort = Qes::all()->sortBy('projectid');
-        $sortx3 = $unsort->sortBy('workerid');
-
-        $unsort = \DB::Table('qes')
-        ->join('projects', 'qes.projectid', '=', 'projects.id')
-        ->join('worker', 'qes.workerid', '=', 'worker.id')
-        ->join('team', 'worker.teamid', '=', 'team.id')
-        ->join('quarter', 'qes.quarterid', '=', 'quarter.id')
-        ->join('projecttype', 'projecttypeid', '=', 'projecttype.id')
-        ->join('kostentraeger', 'projects.ktid', '=', 'kostentraeger.id')
-    //->where('lastname', '=', 'Yost')
-        ->where('year', '=', 2020)
-        ->orderBy('workerid')->orderBy('projectid')
-        ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename')
-        ->get();
-        $sortx5 = $unsort;
-    //$sortx5 = collect($unsort);
-        echo($sortx5);
-    //die();
-
-        return view('test', [
-        'qes' => $sortx5,
-    //FOR LATER:
-    //where('quarterid', '=', '33')->orWhere('quarterid', '=', '30')->get()
-
-    /* NOT NEEDED:
-    'worker' => worker::all(),
-    'users' => User::all(),
-    'projects' => Project::all(),
-    'types' => Projecttype::all(),*/
-        ]);
-    }
 
     public function homeselect()
     {
-    // $user = Qes::all();
-    //return $user;
-    /* foreach ($user as $XX) {
-    echo $XX->worker.'</br>';
-    echo $XX->contractmodelid;
-    echo '</br></br></br>';
-    }*/
-    //return 0;
-    //return $user;
-
         return view(
             'welcome',
             [
             'years' => \DB::Table('quarter')->select('year')->groupBy('year')->get()
             ]
         );
-        // not reached return view('test', ['qes' => Qes::all()->sortByDesc('projectid')->sortByDesc('workerid'),]);
-    }
+         }
 
     public function handleInquiry(Request $yearAndType)
     {
+        $CLEANINGFLAG=0;
         $sumrow = (object)[
             'workerid' => null,
             'projectid' => null,
@@ -126,7 +63,7 @@ class UsersController extends Controller
         $emptyrow= (object)[
             'workerid' => null,
             'projectid' => null,
-            'dent' => 'new',// NEW LINE
+            'dent' => 'project',// NEW LINE
             'desiredstate1' => '',
             'actualstate1' => '',
             'desiredstate2' => '',
@@ -150,20 +87,19 @@ class UsersController extends Controller
 
 
         $ids = QES::groupBy(['workerid','projectid','quarterid','id'])
-
         ->select('id')
         ->get();
-    //$ids=QES::where('workerid','=',"")->get();
-    //dd($ids);
-    //dd(QES::whereNotIn('id', $ids)->get());
-    //die();
-    //QES::whereNotIn('id', $ids)->delete();
-
+        if ($CLEANINGFLAG==1) {
+            //only drop if cleaning is on
+            dd($ids);
+            dd(QES::whereNotIn('id', $ids)->get());
+            die();
+            QES::whereNotIn('id', $ids)->delete();
+        }
         $this->validate($yearAndType, [
         'year' => 'bail|required|integer',
         'ACTION' => 'bail|string|required',
         ]);
-    // echo ($yearAndType->input('year'));
         $objecthere=\DB::Table('qes')
             ->join('projects', 'qes.projectid', '=', 'projects.id')
             ->join('worker', 'qes.workerid', '=', 'worker.id')
@@ -211,7 +147,7 @@ class UsersController extends Controller
                     $row = (object)[
                         'workerid' => null,
                         'projectid' => null,
-                        'dent' => 'new',// NEW LINE
+                        'dent' => 'project',// NEW LINE
                         'desiredstate1' => null,
                         'actualstate1' => null,
                         'desiredstate2' => null,
@@ -264,7 +200,7 @@ class UsersController extends Controller
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
                 //    $rows[] = $sumrow;
-                //    $rows[] = $emptyrow;
+                    $rows[] = $emptyrow;
                 }
             //THEN READ NEW DATA TO NEW ROW OBJECT
                 $row = (object)[

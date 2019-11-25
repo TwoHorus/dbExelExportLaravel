@@ -39,6 +39,30 @@ class UsersExport implements FromView, ShouldAutoSize
         ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')
         ->get();
         $rows=[];
+        $emptyrow= (object)[
+            'workerid' => null,
+            'projectid' => null,
+            'dent' => 'project',// NEW LINE
+            'desiredstate1' => '',
+            'actualstate1' => '',
+            'desiredstate2' => '',
+            'actualstate2' => null,
+            'desiredstate3' => null,
+            'actualstate3' => null,
+            'desiredstate4' => null,
+            'actualstate4' => null,
+            'projecttypename' => '',
+            'projectname' => ' ',
+            'funding' => '',
+            'drittmittel' => '',
+            'kt' => null,
+            'eg' => '',// LATER ADD AS FEATURE
+            'manhoursinamonth' => null,
+            'sender' => 'default',
+            'firstname' => ' ',
+            'lastname' => ' ',
+            'teamname' => ' ',
+        ];
         $currentworker=-1;
         $currentproject=-1;
         $firstmismatch=1;
@@ -73,7 +97,7 @@ class UsersExport implements FromView, ShouldAutoSize
                     $row = (object)[
                     'workerid' => null,
                     'projectid' => null,
-                    'dent' => 'new',// NEW LINE
+                    'dent' => 'project',// NEW LINE
                     'desiredstate1' => null,
                     'actualstate1' => null,
                     'desiredstate2' => null,
@@ -125,8 +149,7 @@ class UsersExport implements FromView, ShouldAutoSize
                 } else {
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
-                // $rows[] = $sumrow;
-                // $rows[] = $emptyrow;
+                    $rows[] = $emptyrow;
                 }
             //THEN READ NEW DATA TO NEW ROW OBJECT
                 $row = (object)[
