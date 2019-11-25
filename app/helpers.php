@@ -26,7 +26,7 @@ function printCurrentRow(stdClass $finishedrow)
     echo  round($finishedrow->manhoursinamonth, 2) ;
                           }?></td>   <!--$entry->quarterid -->
 
-<td><?php echo  $finishedrow->teamname;?></t>
+<td><?php echo  $finishedrow->teamname;?></td>
 
         <?php
     } else {
