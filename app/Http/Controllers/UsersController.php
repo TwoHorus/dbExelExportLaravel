@@ -30,36 +30,37 @@ class UsersController extends Controller
             'years' => \DB::Table('quarter')->select('year')->groupBy('year')->get()
             ]
         );
-         }
+    }
+    public function insertdata($row, $datapoint)
+    {
+        switch ($datapoint->quarter->q ?? $datapoint->q) {
+            case '1':
+                $row->desiredstate1 = $datapoint->desiredstate;
+                $row->actualstate1 = $datapoint->actualstate;
+                break;
+            case '2':
+                $row->desiredstate2 = $datapoint->desiredstate;
+                $row->actualstate2 = $datapoint->actualstate;
+                break;
+            case '3':
+                    $row->desiredstate3 = $datapoint->desiredstate;
+                    $row->actualstate3 = $datapoint->actualstate;
+                break;
+            case '4':
+                $row->desiredstate4 = $datapoint->desiredstate;
+                $row->actualstate4 = $datapoint->actualstate;
+                break;
+            default:
+                break;
+        }
+        return $row;
+    }
+
 
     public function handleInquiry(Request $yearAndType)
     {
         $CLEANINGFLAG=0;
-        $sumrow = (object)[
-            'workerid' => null,
-            'projectid' => null,
-            'dent' => 'new',// NEW LINE
-            'desiredstate1' => '=SUM(I1:I5)',
-            'actualstate1' => '=SUM(J1:J5)',
-            'desiredstate2' => '=SUM(K1:K5)',
-            'actualstate2' => '=SUM(L1:L5)',
-            'desiredstate3' => '=SUM(M1:M5)',
-            'actualstate3' => '=SUM(N1:N5)',
-            'desiredstate4' => '=SUM(O1:O5)',
-            'actualstate4' => '=SUM(P1:P5)',
-            'projecttypename' => '',
-            'projectname' => ' ',
-            'funding' => '',
-            'drittmittel' => '',
-            'kt' => null,
-            'eg' => '',// LATER ADD AS FEATURE
-            'manhoursinamonth' => null,
-            'sender' => 'default',
-            'firstname' => ' ',
-            'lastname' => ' ',
-            'teamname' => ' ',
-        ];
-
+        
         $emptyrow= (object)[
             'workerid' => null,
             'projectid' => null,
@@ -120,26 +121,7 @@ class UsersController extends Controller
             if ($currentworker==$datapoint->workerid) {//SAME WORKER
                 if ($currentproject==$datapoint->projectid) {//SAME PROJECT
                 //READDATATOROW
-                    switch ($datapoint->quarter->q ?? $datapoint->q) {
-                        case '1':
-                            $row->desiredstate1 = $datapoint->desiredstate;
-                            $row->actualstate1 = $datapoint->actualstate;
-                            break;
-                        case '2':
-                            $row->desiredstate2 = $datapoint->desiredstate;
-                            $row->actualstate2 = $datapoint->actualstate;
-                            break;
-                        case '3':
-                                    $row->desiredstate3 = $datapoint->desiredstate;
-                                    $row->actualstate3 = $datapoint->actualstate;
-                            break;
-                        case '4':
-                                $row->desiredstate4 = $datapoint->desiredstate;
-                                $row->actualstate4 = $datapoint->actualstate;
-                            break;
-                        default:
-                            break;
-                    }
+                    $row=$this->insertdata($row, $datapoint);
                 } else {
                     $currentproject=$datapoint->projectid;//UPDATE PROJECT
                 //PUT ROW INTO OUR OBJECTLIST FIRST
@@ -169,26 +151,7 @@ class UsersController extends Controller
                         'teamname' => ' ',
                     ];
                 //READING Q DATA DYNAMICALLY
-                    switch ($datapoint->quarter->q ?? $datapoint->q) {
-                        case '1':
-                            $row->desiredstate1 = $datapoint->desiredstate;
-                            $row->actualstate1 = $datapoint->actualstate;
-                            break;
-                        case '2':
-                            $row->desiredstate2 = $datapoint->desiredstate;
-                            $row->actualstate2 = $datapoint->actualstate;
-                            break;
-                        case '3':
-                            $row->desiredstate3 = $datapoint->desiredstate;
-                            $row->actualstate3 = $datapoint->actualstate;
-                            break;
-                        case '4':
-                            $row->desiredstate4 = $datapoint->desiredstate;
-                            $row->actualstate4 = $datapoint->actualstate;
-                            break;
-                        default:
-                            break;
-                    }
+                    $row=$this->insertdata($row, $datapoint);
                 }
             } else {
                 $currentworker = $datapoint->workerid; //WORKER IS WORKERNOW
@@ -199,7 +162,6 @@ class UsersController extends Controller
                 } else {
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
-                //    $rows[] = $sumrow;
                     $rows[] = $emptyrow;
                 }
             //THEN READ NEW DATA TO NEW ROW OBJECT
@@ -228,26 +190,7 @@ class UsersController extends Controller
                     'teamname' => $datapoint->worker->team->name ?? $datapoint->tname,
                 ];
             //READING Q DATA DYNAMICALLY
-                switch ($datapoint->quarter->q ?? $datapoint->q) {
-                    case '1':
-                        $row->desiredstate1 = $datapoint->desiredstate;
-                        $row->actualstate1 = $datapoint->actualstate;
-                        break;
-                    case '2':
-                        $row->desiredstate2 = $datapoint->desiredstate;
-                        $row->actualstate2 = $datapoint->actualstate;
-                        break;
-                    case '3':
-                        $row->desiredstate3 = $datapoint->desiredstate;
-                        $row->actualstate3 = $datapoint->actualstate;
-                        break;
-                    case '4':
-                        $row->desiredstate4 = $datapoint->desiredstate;
-                        $row->actualstate4 = $datapoint->actualstate;
-                        break;
-                    default:
-                        break;
-                }
+                $row=$this->insertdata($row, $datapoint);
             }
         }
     //PUT LAST ROW!!!
