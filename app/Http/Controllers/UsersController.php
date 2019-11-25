@@ -93,13 +93,7 @@ class UsersController extends Controller
             'years' => \DB::Table('quarter')->select('year')->groupBy('year')->get()
             ]
         );
-        return view('test', [
-        'qes' => Qes::all()->sortByDesc('projectid')->sortByDesc('workerid'),
-
-    //'users' => User::all(),
-    // 'workers' => worker::all(),
-
-        ]);
+        // not reached return view('test', ['qes' => Qes::all()->sortByDesc('projectid')->sortByDesc('workerid'),]);
     }
 
     public function handleInquiry(Request $yearAndType)
