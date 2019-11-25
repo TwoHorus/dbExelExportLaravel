@@ -23,6 +23,30 @@ class UsersExport implements FromView, ShouldAutoSize
     {
         $this->year = $year;
     }
+    public function insertdata($row, $datapoint)
+    {
+        switch ($datapoint->quarter->q ?? $datapoint->q) {
+            case '1':
+                $row->desiredstate1 = $datapoint->desiredstate;
+                $row->actualstate1 = $datapoint->actualstate;
+                break;
+            case '2':
+                $row->desiredstate2 = $datapoint->desiredstate;
+                $row->actualstate2 = $datapoint->actualstate;
+                break;
+            case '3':
+                $row->desiredstate3 = $datapoint->desiredstate;
+                $row->actualstate3 = $datapoint->actualstate;
+                break;
+            case '4':
+                $row->desiredstate4 = $datapoint->desiredstate;
+                $row->actualstate4 = $datapoint->actualstate;
+                break;
+            default:
+                break;
+        }
+        return $row;
+    }
 
     public function view(): View
     {
@@ -40,28 +64,28 @@ class UsersExport implements FromView, ShouldAutoSize
         ->get();
         $rows=[];
         $emptyrow= (object)[
-            'workerid' => null,
-            'projectid' => null,
-            'dent' => 'project',// NEW LINE
-            'desiredstate1' => '',
-            'actualstate1' => '',
-            'desiredstate2' => '',
-            'actualstate2' => null,
-            'desiredstate3' => null,
-            'actualstate3' => null,
-            'desiredstate4' => null,
-            'actualstate4' => null,
-            'projecttypename' => '',
-            'projectname' => ' ',
-            'funding' => '',
-            'drittmittel' => '',
-            'kt' => null,
-            'eg' => '',// LATER ADD AS FEATURE
-            'manhoursinamonth' => null,
-            'sender' => 'default',
-            'firstname' => ' ',
-            'lastname' => ' ',
-            'teamname' => ' ',
+        'workerid' => null,
+        'projectid' => null,
+        'dent' => 'project',// NEW LINE
+        'desiredstate1' => '',
+        'actualstate1' => '',
+        'desiredstate2' => '',
+        'actualstate2' => null,
+        'desiredstate3' => null,
+        'actualstate3' => null,
+        'desiredstate4' => null,
+        'actualstate4' => null,
+        'projecttypename' => '',
+        'projectname' => ' ',
+        'funding' => '',
+        'drittmittel' => '',
+        'kt' => null,
+        'eg' => '',// LATER ADD AS FEATURE
+        'manhoursinamonth' => null,
+        'sender' => 'default',
+        'firstname' => ' ',
+        'lastname' => ' ',
+        'teamname' => ' ',
         ];
         $currentworker=-1;
         $currentproject=-1;
@@ -69,27 +93,8 @@ class UsersExport implements FromView, ShouldAutoSize
         foreach ($objecthere as $datapoint) {
             if ($currentworker==$datapoint->workerid) {//SAME WORKER
                 if ($currentproject==$datapoint->projectid) {//SAME PROJECT
-                //READDATATOROW
-                    switch ($datapoint->quarter->q ?? $datapoint->q) {
-                        case '1':
-                            $row->desiredstate1 = $datapoint->desiredstate;
-                            $row->actualstate1 = $datapoint->actualstate;
-                            break;
-                        case '2':
-                            $row->desiredstate2 = $datapoint->desiredstate;
-                            $row->actualstate2 = $datapoint->actualstate;
-                            break;
-                        case '3':
-                                    $row->desiredstate3 = $datapoint->desiredstate;
-                                    $row->actualstate3 = $datapoint->actualstate;
-                            break;
-                        case '4':
-                                $row->desiredstate4 = $datapoint->desiredstate;
-                                $row->actualstate4 = $datapoint->actualstate;
-                            break;
-                        default:
-                            break;
-                    }
+                    //READDATATOROW
+                    $row=$this->insertdata($row, $datapoint);
                 } else {
                     $currentproject=$datapoint->projectid;//UPDATE PROJECT
                 //PUT ROW INTO OUR OBJECTLIST FIRST
@@ -119,33 +124,14 @@ class UsersExport implements FromView, ShouldAutoSize
                     'teamname' => ' ',
                     ];
                 //READING Q DATA DYNAMICALLY
-                    switch ($datapoint->quarter->q ?? $datapoint->q) {
-                        case '1':
-                            $row->desiredstate1 = $datapoint->desiredstate;
-                            $row->actualstate1 = $datapoint->actualstate;
-                            break;
-                        case '2':
-                            $row->desiredstate2 = $datapoint->desiredstate;
-                            $row->actualstate2 = $datapoint->actualstate;
-                            break;
-                        case '3':
-                            $row->desiredstate3 = $datapoint->desiredstate;
-                            $row->actualstate3 = $datapoint->actualstate;
-                            break;
-                        case '4':
-                            $row->desiredstate4 = $datapoint->desiredstate;
-                            $row->actualstate4 = $datapoint->actualstate;
-                            break;
-                        default:
-                            break;
-                    }
+                    $row=$this->insertdata($row, $datapoint);
                 }
             } else {
                 $currentworker = $datapoint->workerid; //WORKER IS WORKERNOW
                 $currentproject=$datapoint->projectid; //PROJECT IS PROJECT NOW
                 if ($firstmismatch==1) {//SPECIAL FIRST ROW ONLY
                     $firstmismatch=0;
-                    //FIRST ROW IS NULL NOW
+                //FIRST ROW IS NULL NOW
                 } else {
                 //PUT ROW INTO OUR OBJECTLIST FIRST
                     $rows[] = $row;
@@ -177,31 +163,12 @@ class UsersExport implements FromView, ShouldAutoSize
                 'teamname' => $datapoint->worker->team->name ?? $datapoint->tname,
                 ];
             //READING Q DATA DYNAMICALLY
-                switch ($datapoint->quarter->q ?? $datapoint->q) {
-                    case '1':
-                        $row->desiredstate1 = $datapoint->desiredstate;
-                        $row->actualstate1 = $datapoint->actualstate;
-                        break;
-                    case '2':
-                        $row->desiredstate2 = $datapoint->desiredstate;
-                        $row->actualstate2 = $datapoint->actualstate;
-                        break;
-                    case '3':
-                        $row->desiredstate3 = $datapoint->desiredstate;
-                        $row->actualstate3 = $datapoint->actualstate;
-                        break;
-                    case '4':
-                        $row->desiredstate4 = $datapoint->desiredstate;
-                        $row->actualstate4 = $datapoint->actualstate;
-                        break;
-                    default:
-                        break;
-                }
+                $row=$this->insertdata($row, $datapoint);
             }
         }
         $rows[] = $row;
-        // Set auto size for sheet
-        
+    // Set auto size for sheet
+
         return view('test', ['qes' => $rows,'uienabled' => 'false' ]);
     }
 }
