@@ -19,7 +19,8 @@ class UsersController extends Controller
  */
     public function export()
     {
-        return Excel::download(new UsersExport(), 'users.xlsx');
+        //Example for calling download
+        return Excel::download(new UsersExport(1086), 'users.xlsx');
     }
 
     public function homeselect()
@@ -114,6 +115,7 @@ class UsersController extends Controller
             ->select('*', 'team.name as tname', 'projects.name as pname', 'projecttype.name as ptypename', 'kostentraeger.name as ktypename', 'contractmodel.name as eg')
         ->get();
         $rows=[];
+        $row=null;
         $currentworker=-1;
         $currentproject=-1;
         $firstmismatch=1;
