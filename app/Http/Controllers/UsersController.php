@@ -100,7 +100,7 @@ class UsersController extends Controller
         }
         $this->validate($yearAndType, [
         'year' => 'bail|required|integer',
-        'ACTION' => 'bail|string|required',
+        'ACTION' => 'bail|required|string',
         ]);
         $objecthere=\DB::Table('qes')
             ->join('projects', 'qes.projectid', '=', 'projects.id')
